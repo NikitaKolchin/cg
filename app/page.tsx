@@ -1,3 +1,4 @@
+import Gantt from '@/components/gantt/gantt';
 import { lightHouse } from './fonts';
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
             <h1 className={`${lightHouse.variable} font-serif`}>
                 Работа в удовольствие - это реально
             </h1>
+            <Gantt />
         </main>
     );
 }
