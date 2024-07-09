@@ -1,9 +1,12 @@
-import NextAuth, { User } from 'next-auth';
+import bcrypt from 'bcryptjs';
+import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import GoggleProvider from 'next-auth/providers/google';
-import { users } from '@/data/users';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import prisma from '@/lib/prisma';
+import { getUserByEmail, getUserById } from '@/lib/actions/user.actions';
+import { Role } from '@prisma/client';
+import { getAccountByUserId } from '@/lib/account';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
@@ -21,25 +24,83 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 },
             },
             async authorize(credentials) {
-                if (!credentials?.email || !credentials.password) return null;
+                // if validation is successfull
+                const { email, password } = credentials;
+                if (!email || !password) return null;
 
-                const currentUser = users.find(
-                    (user) => user.email === credentials.email,
+                const user = await getUserByEmail(email as string); // checking if user is present in database
+                if (!user || !user.password) return null; // password will be null when user has registered using google or github
+
+                const passwordsMatch = await bcrypt.compare(
+                    password as string,
+                    user.password,
                 );
-
-                if (
-                    currentUser &&
-                    currentUser.password === credentials.password
-                ) {
-                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                    const { password, ...userWithoutPass } = currentUser;
-
-                    return userWithoutPass as User;
+                // const passwordsMatch = password === user.password;
+                if (passwordsMatch) {
+                    return user;
                 }
-
                 return null;
             },
         }),
     ],
     adapter: PrismaAdapter(prisma),
+    events: {
+        async linkAccount({ user }) {
+            await prisma.user.update({
+                where: { id: user.id },
+                data: { emailVerified: new Date() },
+            });
+        },
+    },
+
+    callbacks: {
+        // * (70)
+        async signIn({ user, account }) {
+            // Allow OAuth without email verification
+            if (account?.provider !== 'credentials') return true;
+
+            const existingUser = await getUserById(user.id as string);
+
+            // Prevent sign in without email verification
+            if (!existingUser?.emailVerified) return false;
+
+            return true;
+        },
+
+        async session({ token, session }) {
+            if (token.sub && session.user) {
+                session.user.id = token.sub;
+            }
+
+            if (token.role && session.user) {
+                session.user.role = token.role as Role;
+            }
+
+            if (session.user) {
+                session.user.name = token.name;
+                session.user.email = token.email as string;
+                session.user.isOAuth = token.isOAuth as boolean;
+            }
+
+            return session;
+        },
+
+        async jwt({ token }) {
+            // fecthing the user
+
+            if (!token.sub) return token;
+            const exisitingUser = await getUserById(token.sub);
+            if (!exisitingUser) return token;
+
+            const existingAccount = await getAccountByUserId(exisitingUser.id);
+
+            token.isOAuth = !!existingAccount;
+            token.role = exisitingUser.role;
+            token.name = exisitingUser.name;
+            token.email = exisitingUser.email;
+
+            return token;
+        },
+    },
+    session: { strategy: 'jwt' },
 });

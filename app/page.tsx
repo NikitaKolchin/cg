@@ -1,5 +1,6 @@
 import Gantt from '@/components/gantt/gantt';
 import { lightHouse } from './fonts';
+import RegisterForm from '@/components/auth/register-form';
 
 export default function Home() {
     return (
@@ -8,6 +9,7 @@ export default function Home() {
                 Работа в удовольствие - это реально
             </h1>
             <Gantt />
+            <RegisterForm />
         </main>
     );
 }
