@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/core": "^0.34.1",
     "@auth/prisma-adapter": "^2.4.1",
+    "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.15.1",
     "bcryptjs": "^2.4.3",
     "next": "14.2.3",
@@ -19,6 +20,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-google-charts": "^4.0.1",
+    "react-hook-form": "^7.52.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {

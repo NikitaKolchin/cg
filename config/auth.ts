@@ -7,6 +7,7 @@ import prisma from '@/lib/prisma';
 import { getUserByEmail, getUserById } from '@/lib/actions/user.actions';
 import { Role } from '@prisma/client';
 import { getAccountByUserId } from '@/lib/account';
+import { LoginSchema } from '@/schema';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
@@ -24,23 +25,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 },
             },
             async authorize(credentials) {
-                // if validation is successfull
-                const { email, password } = credentials;
-                if (!email || !password) return null;
-
-                const user = await getUserByEmail(email as string); // checking if user is present in database
-                if (!user || !user.password) return null; // password will be null when user has registered using google or github
-
-                const passwordsMatch = await bcrypt.compare(
-                    password as string,
-                    user.password,
-                );
-                // const passwordsMatch = password === user.password;
-                if (passwordsMatch) {
+                const validatedFields = LoginSchema.safeParse(credentials); // again doing validation
+                if (validatedFields.success) {
+                  // if validation is successfull
+                  const { email, password } = validatedFields.data;
+        
+                  const user = await getUserByEmail(email); // checking if user is present in database
+                  if (!user || !user.password) return null; // password will be null when user has registered using google or github
+        
+                  const passwordsMatch = await bcrypt.compare(password, user.password); // comparing the hashed password
+        
+                  if (passwordsMatch) {
                     return user;
+                  }
                 }
                 return null;
-            },
+              },
         }),
     ],
     adapter: PrismaAdapter(prisma),
