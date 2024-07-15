@@ -3,8 +3,8 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import GoggleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import prisma from '@/lib/prisma';
-import { getUserByEmail, getUserById } from '@/lib/actions/user.actions';
+import {db} from '@/lib/database.connection';
+import { getUserByEmail, getUserById } from '@/lib/actions/user.action';
 import { Role } from '@prisma/client';
 import { getAccountByUserId } from '@/lib/account';
 import { LoginSchema } from '@/schema';
@@ -27,26 +27,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             async authorize(credentials) {
                 const validatedFields = LoginSchema.safeParse(credentials); // again doing validation
                 if (validatedFields.success) {
-                  // if validation is successfull
-                  const { email, password } = validatedFields.data;
-        
-                  const user = await getUserByEmail(email); // checking if user is present in database
-                  if (!user || !user.password) return null; // password will be null when user has registered using google or github
-        
-                  const passwordsMatch = await bcrypt.compare(password, user.password); // comparing the hashed password
-        
-                  if (passwordsMatch) {
-                    return user;
-                  }
+                    // if validation is successfull
+                    const { email, password } = validatedFields.data;
+
+                    const user = await getUserByEmail(email); // checking if user is present in database
+                    if (!user || !user.password) return null; // password will be null when user has registered using google or github
+
+                    const passwordsMatch = await bcrypt.compare(
+                        password,
+                        user.password,
+                    ); // comparing the hashed password
+
+                    if (passwordsMatch) {
+                        return user;
+                    }
                 }
                 return null;
-              },
+            },
         }),
     ],
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(db),
     events: {
         async linkAccount({ user }) {
-            await prisma.user.update({
+            await db.user.update({
                 where: { id: user.id },
                 data: { emailVerified: new Date() },
             });
