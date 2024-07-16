@@ -1,4 +1,4 @@
-import { auth } from '@/config/auth';
+import { auth } from '@/auth';
 import { menu } from './constants';
 import Link from 'next/link';
 

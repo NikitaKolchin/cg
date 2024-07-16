@@ -1,3 +1,5 @@
+import { LoginButton } from '../auth/login-button';
+import { Button } from '../ui/button';
 import { Hamburger } from './hamburger';
 import { Links } from './links';
 import { Logo } from './logo';
@@ -14,6 +16,11 @@ export const Header = async () => (
             <ul className="hidden sm:flex justify-between content-center">
                 <Logo />
                 <Links />
+                <LoginButton mode="modal" asChild>
+                    <Button variant="secondary" size="lg">
+                        Sign in
+                    </Button>
+                </LoginButton>
             </ul>
         </nav>
     </div>

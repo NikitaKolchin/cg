@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { gigaSans } from '@/app/fonts';
 import './globals.css';
 import { Header } from '@/components/header';
-import { auth } from '@/config/auth';
+import { auth } from '@/auth';
+import { SessionProvider } from 'next-auth/react';
 
 export const metadata: Metadata = {
     title: 'UProffi - работа в удовольствие это реально',
@@ -16,12 +17,14 @@ export default async function RootLayout({
 }>) {
     const session = await auth();
     return (
-        <html lang="en">
-            <body className={`${gigaSans.variable} font-sans`}>
-                <Header />
-                <h3>{session?.user?.name}</h3>
-                {children}
-            </body>
-        </html>
+        <SessionProvider session={session}>
+            <html lang="en">
+                <body className={`${gigaSans.variable} font-sans`}>
+                    <Header />
+                    <h3>{session?.user?.name}</h3>
+                    {children}
+                </body>
+            </html>
+        </SessionProvider>
     );
 }
