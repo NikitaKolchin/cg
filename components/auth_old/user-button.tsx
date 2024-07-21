@@ -8,14 +8,14 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui_old/dropdown-menu";
 import {
     Avatar,
     AvatarImage,
     AvatarFallback,
-} from "@/components/ui/avatar";
+} from "@/components/ui_old/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { LogoutButton } from "@/components/auth/logout-button";
+import { LogoutButton } from "@/components/auth_old/logout-button";
 
 export const UserButton = () => {
     const user = useCurrentUser();

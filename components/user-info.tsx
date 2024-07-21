@@ -3,8 +3,8 @@ import {
     Card,
     CardContent,
     CardHeader
-} from "@/components/ui/card";
-import { Badge } from "./ui/badge";
+} from "@/components/ui_old/card";
+import { Badge } from "./ui_old/badge";
 
 interface UserInfoProps {
     user?: ExtendedUser;

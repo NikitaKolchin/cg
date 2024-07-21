@@ -26,7 +26,7 @@ const menu: MenuItem[] = [
     },
     {
         title: 'Вход',
-        path: 'api/auth/signin',
+        path: 'auth/login',
         className:
             'bg-light text-white h-8 min-w-24 hover:bg-dark p-1 border border-light rounded-xl uppercase flex justify-center items-center',
         icon: null,

@@ -6,21 +6,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition, useState } from "react";
 import { useSession } from "next-auth/react";
 
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/components/ui_old/switch";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui_old/select";
 
 import {
     Card,
     CardHeader,
     CardContent,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui_old/card";
+import { Button } from "@/components/ui_old/button";
 
 import {
     Form,
@@ -30,8 +30,8 @@ import {
     FormLabel,
     FormDescription,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui_old/form";
+import { Input } from "@/components/ui_old/input";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { FormError } from "@/components/form-error";
 

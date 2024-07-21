@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '@/components/header';
 import { auth } from '@/auth';
 import { SessionProvider } from 'next-auth/react';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
     title: 'UProffi - работа в удовольствие это реально',
@@ -23,6 +24,7 @@ export default async function RootLayout({
                     <Header />
                     <h3>{session?.user?.name}</h3>
                     {children}
+                    <Toaster />
                 </body>
             </html>
         </SessionProvider>
