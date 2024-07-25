@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition, useState } from "react";
 import { useSession } from "next-auth/react";
 
-import { Switch } from "@/components/ui_old/switch";
 import {
     Select,
     SelectContent,
@@ -19,8 +18,8 @@ import {
     Card,
     CardHeader,
     CardContent,
-} from "@/components/ui_old/card";
-import { Button } from "@/components/ui_old/button";
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 import {
     Form,
@@ -31,7 +30,7 @@ import {
     FormDescription,
     FormMessage,
 } from "@/components/ui_old/form";
-import { Input } from "@/components/ui_old/input";
+import { Input } from "@/components/ui/input";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { FormError } from "@/components/form-error";
 
@@ -207,13 +206,6 @@ const SettingsPage = () => {
                                                     Enable two factor authentication for your account
                                                 </FormDescription>
                                             </div>
-                                            <FormControl>
-                                                <Switch
-                                                    disabled={isPending}
-                                                    checked={field.value}
-                                                    onCheckedChange={field.onChange}
-                                                />
-                                            </FormControl>
                                         </FormItem>
                                     )}
                                 />

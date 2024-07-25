@@ -1,5 +1,3 @@
-import { LoginButton } from '../auth_old/login-button';
-import { Button } from '../ui_old/button';
 import { Hamburger } from './hamburger';
 import { Links } from './links';
 import { Logo } from './logo';

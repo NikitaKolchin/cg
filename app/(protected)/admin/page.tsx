@@ -2,8 +2,8 @@
 import { admin } from '@/actions/auth/admin';
 import { RoleGate } from '@/components/auth_old/role-gate';
 import { FormSuccess } from '@/components/form-sucess';
-import { Button } from '@/components/ui_old/button';
-import { Card, CardContent, CardHeader } from '@/components/ui_old/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { UserRole } from '@prisma/client';
 import React from 'react'
 import { toast } from "sonner";

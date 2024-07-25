@@ -7,12 +7,13 @@ import { useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui_old/button';
-import { FormError } from '@/components/form-error';
 import { LoginSchema } from '@/schema';
 import { Login } from '@/actions/auth/login';
+import { Social } from './social';
+import { Button } from '../ui/button';
+import { FormError } from '../form-error';
 import { FormSuccess } from '../form-sucess';
-import { Social } from '../auth_old/social';
+import { Input } from '../ui/input';
 
 export const LoginForm = () => {
     const searchParams = useSearchParams();
@@ -62,38 +63,39 @@ export const LoginForm = () => {
 
     return (
         <>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6 p-2 border-2 border-dark"
+            >
                 <div className="space-y-4">
-                    <input
+                    <Input
                         disabled={isPending}
                         placeholder="john.doe@example.com"
                         type="email"
-                        {...form.register("email")}
+                        {...form.register('email')}
                     />
 
-                    <input
+                    <Input
                         disabled={isPending}
                         placeholder="******"
                         type="password"
-                        {...form.register("password")}
-
+                        {...form.register('password')}
                     />
                     <Button
                         size="sm"
                         variant="link"
-                        asChild
                         className="px-0 font-normal"
                     >
                         <Link href="/auth/reset">Forgot password?</Link>
                     </Button>
                 </div>
+                <Social />
                 <FormError message={error || urlError} />
                 <FormSuccess message={success} />
                 <Button disabled={isPending} type="submit" className="w-full">
                     {showTwoFactor ? 'Confirm' : 'Login'}
                 </Button>
             </form>
-            <Social />
         </>
     );
 };

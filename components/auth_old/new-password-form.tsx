@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useTransition } from 'react'
-import { CardWrapper } from './card-wrapper';
+import { CardWrapper } from '../auth/card-wrapper';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui_old/form';
-import { Input } from "@/components/ui_old/input";
+import { Input } from "@/components/ui/input";
 import { useForm } from 'react-hook-form';
 import { NewPasswordSchema } from '@/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,7 +10,7 @@ import { z } from 'zod';
 
 import { FormError } from '../form-error';
 import { FormSuccess } from '../form-sucess';
-import { Button } from '../ui_old/button';
+import { Button } from '../ui/button';
 import { useSearchParams } from 'next/navigation';
 import { newPassword } from '@/actions/auth/new-password';
 
