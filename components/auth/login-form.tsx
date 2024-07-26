@@ -23,7 +23,6 @@ export const LoginForm = () => {
             ? 'Email already in use with different provider!'
             : '';
 
-    const [showTwoFactor, setShowTwoFactor] = useState(false);
     const [error, setError] = useState<string | undefined>('');
     const [success, setSuccess] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
@@ -51,10 +50,6 @@ export const LoginForm = () => {
                     if (data?.success) {
                         form.reset();
                         setSuccess(data.success);
-                    }
-
-                    if (data?.twoFactor) {
-                        setShowTwoFactor(true);
                     }
                 })
                 .catch(() => setError('Something went wrong'));
@@ -93,7 +88,7 @@ export const LoginForm = () => {
                 <FormError message={error || urlError} />
                 <FormSuccess message={success} />
                 <Button disabled={isPending} type="submit" className="w-full">
-                    {showTwoFactor ? 'Confirm' : 'Login'}
+                    {'Login'}
                 </Button>
             </form>
         </>
