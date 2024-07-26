@@ -5,7 +5,6 @@ import { db } from '@/lib/database.connection';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { getUserById } from '@/lib/actions/user.action';
 import { UserRole } from '@prisma/client';
-import { getTwoFactorConfirmationByUserId } from '@/lib/actions/auth/two-factor-confirmation';
 import { getAccountByUserId } from '@/lib/account';
 
 export const {
@@ -42,19 +41,6 @@ export const {
             // Prevent sign in without email verification
             if (!existingUser?.emailVerified) return false;
 
-            // * Prevent sign in without two factor confirmation  (99)
-            if (existingUser.isTwoFactorEnabled) {
-                const twoFactorConfirmation =
-                    await getTwoFactorConfirmationByUserId(existingUser.id);
-
-                if (!twoFactorConfirmation) return false;
-
-                // Delete two factor confirmation for next sign in
-                await db.twoFactorConfirmation.delete({
-                    where: { id: twoFactorConfirmation.id },
-                });
-            }
-
             return true;
         },
 
@@ -65,11 +51,6 @@ export const {
 
             if (token.role && session.user) {
                 session.user.role = token.role as UserRole;
-            }
-
-            if (session.user) {
-                session.user.isTwoFactorEnabled =
-                    token.isTwoFactorEnabled as boolean;
             }
 
             if (session.user) {
@@ -94,7 +75,6 @@ export const {
             token.role = exisitingUser.role;
             token.name = exisitingUser.name;
             token.email = exisitingUser.email;
-            token.isTwoFactorEnabled = exisitingUser.isTwoFactorEnabled;
 
             return token;
         },
