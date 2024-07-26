@@ -1,25 +1,13 @@
-"use client";
+'use client';
 
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition, useState } from "react";
-import { useSession } from "next-auth/react";
+import * as z from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTransition, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui_old/select";
-
-import {
-    Card,
-    CardHeader,
-    CardContent,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 import {
     Form,
@@ -29,15 +17,15 @@ import {
     FormLabel,
     FormDescription,
     FormMessage,
-} from "@/components/ui_old/form";
-import { Input } from "@/components/ui/input";
-import { useCurrentUser } from "@/hooks/use-current-user";
-import { FormError } from "@/components/form-error";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { useCurrentUser } from '@/hooks/use-current-user';
+import { FormError } from '@/components/form-error';
 
-import { UserRole } from "@prisma/client";
-import { SettingsSchema } from "@/schema";
-import { settings } from "@/actions/auth/settings";
-import { FormSuccess } from "@/components/form-sucess";
+import { UserRole } from '@prisma/client';
+import { SettingsSchema } from '@/schema';
+import { settings } from '@/actions/auth/settings';
+import { FormSuccess } from '@/components/form-sucess';
 
 const SettingsPage = () => {
     const user = useCurrentUser();
@@ -56,7 +44,7 @@ const SettingsPage = () => {
             email: user?.email || undefined,
             role: user?.role || undefined,
             isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
-        }
+        },
     });
 
     const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
@@ -72,9 +60,9 @@ const SettingsPage = () => {
                         setSuccess(data.success);
                     }
                 })
-                .catch(() => setError("Something went wrong!"));
+                .catch(() => setError('Something went wrong!'));
         });
-    }
+    };
 
     return (
         <Card className="w-[600px]">
@@ -82,6 +70,18 @@ const SettingsPage = () => {
                 <p className="text-2xl font-semibold text-center">
                     ⚙️ Settings
                 </p>
+                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                    <g color="green">
+                        <circle
+                            r="5"
+                            cx="5"
+                            cy="5"
+                            stroke="currentcolor"
+                            fill="none"
+                            stroke-width="5"
+                        />
+                    </g>
+                </svg>
             </CardHeader>
             <CardContent>
                 <Form {...form}>
@@ -150,7 +150,9 @@ const SettingsPage = () => {
                                         name="newPassword"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>New Password</FormLabel>
+                                                <FormLabel>
+                                                    New Password
+                                                </FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         {...field}
@@ -171,25 +173,18 @@ const SettingsPage = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Role</FormLabel>
-                                        <Select
+                                        <select
                                             disabled={isPending}
-                                            onValueChange={field.onChange}
+                                            onChange={field.onChange}
                                             defaultValue={field.value}
                                         >
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select a role" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectItem value={UserRole.ADMIN}>
-                                                    Admin
-                                                </SelectItem>
-                                                <SelectItem value={UserRole.USER}>
-                                                    User
-                                                </SelectItem>
-                                            </SelectContent>
-                                        </Select>
+                                            <option value={UserRole.ADMIN}>
+                                                Admin
+                                            </option>
+                                            <option value={UserRole.USER}>
+                                                User
+                                            </option>
+                                        </select>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -198,12 +193,16 @@ const SettingsPage = () => {
                                 <FormField
                                     control={form.control}
                                     name="isTwoFactorEnabled"
-                                    render={({ field }) => (
+                                    render={() => (
                                         <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                                             <div className="space-y-0.5">
-                                                <FormLabel>Two Factor Authentication</FormLabel>
+                                                <FormLabel>
+                                                    Two Factor Authentication
+                                                </FormLabel>
                                                 <FormDescription>
-                                                    Enable two factor authentication for your account
+                                                    Enable two factor
+                                                    authentication for your
+                                                    account
                                                 </FormDescription>
                                             </div>
                                         </FormItem>
@@ -213,18 +212,14 @@ const SettingsPage = () => {
                         </div>
                         <FormError message={error} />
                         <FormSuccess message={success} />
-                        <Button
-                            disabled={isPending}
-                            type="submit"
-                        >
+                        <Button disabled={isPending} type="submit">
                             Save
                         </Button>
                     </form>
                 </Form>
             </CardContent>
         </Card>
-       
     );
-}
+};
 
 export default SettingsPage;

@@ -31,6 +31,7 @@ const config: Config = {
                 serif: ['var(--font-serif)'],
             },
         },
+        // plugins: [require('tailwindcss-animate')],
     },
 };
 export default config;

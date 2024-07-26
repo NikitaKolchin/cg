@@ -1,50 +1,53 @@
-'use client'
-import React, { useState, useTransition } from 'react'
-import { CardWrapper } from '../auth/card-wrapper';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui_old/form';
-import { Input } from "@/components/ui/input";
+'use client';
+
+import * as z from 'zod';
 import { useForm } from 'react-hook-form';
-import { NewPasswordSchema } from '@/schema';
+import { useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 
-import { FormError } from '../form-error';
+import { Input } from '@/components/ui/input';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form';
+import { CardWrapper } from '@/components/auth/card-wrapper';
+import { Button } from '@/components/ui/button';
+import { FormError } from '@/components/form-error';
+import { ResetSchema } from '@/schema';
 import { FormSuccess } from '../form-sucess';
-import { Button } from '../ui/button';
-import { useSearchParams } from 'next/navigation';
-import { newPassword } from '@/actions/auth/new-password';
+import { reset } from '@/actions/auth/reset';
 
-const NewPasswordForm = () => {
-    const searchParams = useSearchParams();
-    const token = searchParams.get("token");
-
-    const [error, setError] = useState<string | undefined>("");
-    const [success, setSuccess] = useState<string | undefined>("");
+export const ResetForm = () => {
+    const [error, setError] = useState<string | undefined>('');
+    const [success, setSuccess] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
 
-    const form = useForm<z.infer<typeof NewPasswordSchema>>({
-        resolver: zodResolver(NewPasswordSchema),
+    const form = useForm<z.infer<typeof ResetSchema>>({
+        resolver: zodResolver(ResetSchema),
         defaultValues: {
-            password: "",
+            email: '',
         },
     });
 
-    const onSubmit = (values: z.infer<typeof NewPasswordSchema>) => {
-        setError("");
-        setSuccess("");
+    const onSubmit = (values: z.infer<typeof ResetSchema>) => {
+        setError('');
+        setSuccess('');
 
         startTransition(() => {
-            newPassword(values, token)
-                .then((data) => {
-                    setError(data?.error);
-                    setSuccess(data?.success);
-                });
+            reset(values).then((data) => {
+                setError(data?.error);
+                setSuccess(data?.success);
+            });
         });
     };
 
     return (
         <CardWrapper
-            headerLabel="Enter a new password"
+            headerLabel="Forgot your password?"
             backButtonLabel="Back to login"
             backButtonHref="/auth/login"
         >
@@ -56,16 +59,16 @@ const NewPasswordForm = () => {
                     <div className="space-y-4">
                         <FormField
                             control={form.control}
-                            name="password"
+                            name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel>Email</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
-                                            placeholder="******"
-                                            type="password"
+                                            placeholder="john.doe@example.com"
+                                            type="email"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -80,12 +83,10 @@ const NewPasswordForm = () => {
                         type="submit"
                         className="w-full"
                     >
-                        Reset password
+                        Send reset email
                     </Button>
                 </form>
             </Form>
         </CardWrapper>
-    )
-}
-
-export default NewPasswordForm
+    );
+};

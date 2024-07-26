@@ -1,5 +1,5 @@
 import { lightHouse } from './fonts';
-import RegisterForm from '@/components/auth_old/register-form';
+import RegisterForm from '@/components/auth/register-form';
 
 export default function Home() {
     return (
