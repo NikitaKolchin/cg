@@ -1,18 +1,18 @@
 import Link from 'next/link';
 
 import { Background } from '../background/Background';
-import { Button } from '../button/Button';
 import { HeroOneButton } from '../hero/HeroOneButton';
 import { Section } from '../layout/Section';
 import { NavbarTwoColumns } from '../navigation/NavbarTwoColumns';
 import { Logo } from './Logo';
 import { auth } from '@/auth';
+import { Button } from '@/components/ui/button';
 
 const Hero = async () => {
     const session = await auth();
     const isAuth = !!session;
     return (
-        <Background color="bg-gray-100">
+        <Background color="bg-gray-300">
             <Section yPadding="py-6">
                 <NavbarTwoColumns logo={<Logo xl />}>
                     <li>
@@ -22,7 +22,9 @@ const Hero = async () => {
                     </li>
                     <li>
                         {isAuth ? (
-                            <Link href="api/auth/signout">Sign out</Link>
+                            <Link href="api/auth/signout">
+                                <Button>Sign out</Button>
+                            </Link>
                         ) : (
                             <Link href="auth/login">Sign in</Link>
                         )}
@@ -43,7 +45,9 @@ const Hero = async () => {
                     description="The easiest way to build a React landing page in seconds."
                     button={
                         <Link href="https://creativedesignsguru.com/category/nextjs/">
-                            <Button xl>Download Your Free Theme</Button>
+                            <Button variant={'secondary'}>
+                                Download Your Free Theme
+                            </Button>
                         </Link>
                     }
                 />

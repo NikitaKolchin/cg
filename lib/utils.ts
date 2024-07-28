@@ -1,8 +1,8 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs));
 }
 
 export const AppConfig = {
@@ -11,4 +11,3 @@ export const AppConfig = {
     description: 'Starter code for your Nextjs Boilerplate with Tailwind CSS',
     locale: 'en',
 };
-  
