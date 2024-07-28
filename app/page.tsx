@@ -1,12 +1,21 @@
-import { lightHouse } from './fonts';
-import RegisterForm from '@/components/auth/register-form';
+import { Meta } from '@/src/layout/Meta';
+import { Banner } from '@/src/templates/Banner';
+import { Footer } from '@/src/templates/Footer';
+import { Hero } from '@/src/templates/Hero';
+import { Sponsors } from '@/src/templates/Sponsors';
+import { VerticalFeatures } from '@/src/templates/VerticalFeatures';
 
 export default function Home() {
     return (
         <main className="bg-sand">
-            <h1 className={`${lightHouse.variable} font-serif`}>
-                Работа в удовольствие - это реально
-            </h1>
+            <div className="text-gray-600 antialiased">
+                <Meta/>
+                <Hero />
+                <Sponsors />
+                <VerticalFeatures />
+                <Banner />
+                <Footer />
+            </div>
         </main>
     );
 }
