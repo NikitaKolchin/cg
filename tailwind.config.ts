@@ -9,13 +9,6 @@ const config: Config = {
         './src/**/*.{ts,tsx}',
     ],
     theme: {
-        colors: {
-            light: '#77C6C4',
-            dark: '#045569',
-            normal: '#43606E',
-            sand: '#FBFAF5',
-            white: '#FFFFFF',
-        },
         container: {
             padding: {
                 DEFAULT: '1rem',
@@ -43,6 +36,11 @@ const config: Config = {
                 serif: ['var(--font-serif)'],
             },
             colors: {
+                light: '#77C6C4',
+                dark: '#045569',
+                normal: '#43606E',
+                sand: '#FBFAF5',
+                white: '#FFFFFF',
                 primary: {
                     100: '#E6F6FE',
                     200: '#C0EAFC',
@@ -70,7 +68,6 @@ const config: Config = {
                 hero: '4.5rem',
             },
         },
-        // plugins: [require('tailwindcss-animate')],
     },
 };
 export default config;

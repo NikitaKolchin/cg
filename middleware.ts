@@ -20,14 +20,14 @@ export default auth((req) => {
 
     // order of if condition matters here
     if (isApiAuthRoute) {
-        return null;
+        return;
     }
 
     if (isAuthRoute) {
         if (isLoggedIn) {
             return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
         } else {
-            return null;
+            return;
         }
     }
 
@@ -44,7 +44,7 @@ export default auth((req) => {
             new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl),
         );
     }
-    return null;
+    return;
 });
 
 // Optionally, don't invoke Middleware on some paths
