@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
-import { Background } from '../../components/background/Background';
 import { HeroOneButton } from '../../components/hero/HeroOneButton';
 import { Section } from '../../components/layout/Section';
 import { Button } from '@/components/ui/button';
 
 const Hero = async () => {
     return (
-        <Background color="bg-gray-300">
-            <Section yPadding="pt-10 pb-12">
+        <Section color="bg-gray-300" yPadding="pt-10">
+            <div className="sm:flex max-sm:pb-12">
                 <HeroOneButton
                     title={
                         <>
@@ -32,12 +30,13 @@ const Hero = async () => {
                 />
                 <Image
                     src="/assets/images/yana.webp"
-                    width="200"
-                    height="300"
-                    alt="yana"
+                    width="300"
+                    height="420"
+                    alt="Яна"
+                    className="max-sm:absolute max-sm:top-28 max-sm:left-10 max-sm:opacity-35"
                 />
-            </Section>
-        </Background>
+            </div>
+        </Section>
     );
 };
 

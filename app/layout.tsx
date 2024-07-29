@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'sonner';
 import { AppConfig } from '@/lib/utils';
 import { Header } from '@/components/header';
+import { Footer } from '@/src/templates/Footer';
 
 export const metadata: Metadata = {
     title: AppConfig.title,
@@ -24,6 +25,7 @@ export default async function RootLayout({
                 <body className={`${gigaSans.variable} font-sans`}>
                     <Header />
                     {children}
+                    <Footer />
                     <Toaster />
                 </body>
             </html>
