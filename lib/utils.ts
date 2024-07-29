@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const AppConfig = {
-    site_name: 'Starter',
+    site_name: 'Плохих',
     title: 'UProffi - работа в удовольствие это реально',
     description: 'Starter code for your Nextjs Boilerplate with Tailwind CSS',
     locale: 'en',

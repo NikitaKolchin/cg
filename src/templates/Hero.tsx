@@ -1,55 +1,40 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
-import { Background } from '../background/Background';
-import { HeroOneButton } from '../hero/HeroOneButton';
-import { Section } from '../layout/Section';
-import { NavbarTwoColumns } from '../navigation/NavbarTwoColumns';
-import { Logo } from './Logo';
-import { auth } from '@/auth';
+import { Background } from '../../components/background/Background';
+import { HeroOneButton } from '../../components/hero/HeroOneButton';
+import { Section } from '../../components/layout/Section';
 import { Button } from '@/components/ui/button';
 
 const Hero = async () => {
-    const session = await auth();
-    const isAuth = !!session;
     return (
         <Background color="bg-gray-300">
-            <Section yPadding="py-6">
-                <NavbarTwoColumns logo={<Logo xl />}>
-                    <li>
-                        <Link href="https://github.com/ixartz/Next-JS-Landing-Page-Starter-Template">
-                            GitHub
-                        </Link>
-                    </li>
-                    <li>
-                        {isAuth ? (
-                            <Link href="api/auth/signout">
-                                <Button>Sign out</Button>
-                            </Link>
-                        ) : (
-                            <Link href="auth/login">Sign in</Link>
-                        )}
-                    </li>
-                </NavbarTwoColumns>
-            </Section>
-
-            <Section yPadding="pt-20 pb-32">
+            <Section yPadding="pt-10 pb-12">
                 <HeroOneButton
                     title={
                         <>
-                            {'The modern landing page for\n'}
+                            {
+                                'Психолог​ Профориентолог​ Карьерный консультант​ Игропрактик\n'
+                            }
                             <span className="text-primary-500">
-                                React developers
+                                Яна Агевнина
                             </span>
                         </>
                     }
-                    description="The easiest way to build a React landing page in seconds."
+                    description="Моя главная задача – раскрыть потенциал и разобраться в чувствах"
                     button={
                         <Link href="https://creativedesignsguru.com/category/nextjs/">
                             <Button variant={'secondary'}>
-                                Download Your Free Theme
+                                Связаться со мной
                             </Button>
                         </Link>
                     }
+                />
+                <Image
+                    src="/assets/images/yana.webp"
+                    width="200"
+                    height="300"
+                    alt="yana"
                 />
             </Section>
         </Background>

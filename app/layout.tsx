@@ -4,8 +4,8 @@ import './globals.css';
 import { auth } from '@/auth';
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'sonner';
-import Link from 'next/link';
 import { AppConfig } from '@/lib/utils';
+import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
     title: AppConfig.title,
@@ -22,7 +22,7 @@ export default async function RootLayout({
         <SessionProvider session={session}>
             <html lang={AppConfig.locale}>
                 <body className={`${gigaSans.variable} font-sans`}>
-                    <span>{session?.user?.name}</span> <Link href={'/'}>/</Link>
+                    <Header />
                     {children}
                     <Toaster />
                 </body>

@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { Background } from '../background/Background';
+import { Background } from '../../components/background/Background';
 import { CenteredFooter } from '../footer/CenteredFooter';
-import { Section } from '../layout/Section';
-import { Logo } from './Logo';
+import { Section } from '../../components/layout/Section';
+import { Logo } from '../../components/ui/logo';
 
 const Footer = () => (
   <Background color="bg-gray-100">
