@@ -3,13 +3,13 @@ import type { ReactNode } from 'react';
 import { FooterCopyright } from './FooterCopyright';
 import { FooterIconList } from './FooterIconList';
 
-type ICenteredFooterProps = {
+type CenteredFooterProps = {
     logo: ReactNode;
     iconList: ReactNode;
     children: ReactNode;
 };
 
-const CenteredFooter = (props: ICenteredFooterProps) => (
+const CenteredFooter = (props: CenteredFooterProps) => (
     <div className="text-center">
         {props.logo}
 

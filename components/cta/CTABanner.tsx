@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
 
-type ICTABannerProps = {
+type CTABannerProps = {
     title: string;
     subtitle: string;
     button: ReactNode;
 };
 
-const CTABanner = (props: ICTABannerProps) => (
+const CTABanner = (props: CTABannerProps) => (
     <div className="flex flex-col rounded-md bg-primary-100 p-4 text-center sm:flex-row sm:items-center sm:justify-between sm:p-12 sm:text-left">
         <div className="text-2xl font-semibold">
             <div className="text-gray-900">{props.title}</div>

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 
-type IVerticalFeatureRowProps = {
+type VerticalFeatureRowProps = {
     title: string;
     description: string;
     image: string;
@@ -8,7 +8,7 @@ type IVerticalFeatureRowProps = {
     reverse?: boolean;
 };
 
-const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
+const VerticalFeatureRow = (props: VerticalFeatureRowProps) => {
     const verticalFeatureClass = cn(
         'mt-20',
         'flex',

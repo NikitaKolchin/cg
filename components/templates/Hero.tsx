@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { HeroOneButton } from '../../components/hero/HeroOneButton';
-import { Section } from '../../components/layout/Section';
+import { HeroOneButton } from '../hero/HeroOneButton';
+import { Section } from '../layout/Section';
 import { Button } from '@/components/ui/button';
 
 const Hero = async () => {

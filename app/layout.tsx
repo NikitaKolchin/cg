@@ -6,7 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'sonner';
 import { AppConfig } from '@/lib/utils';
 import { Header } from '@/components/header';
-import { Footer } from '@/src/templates/Footer';
+import { Footer } from '@/components/templates/Footer';
 
 export const metadata: Metadata = {
     title: AppConfig.title,
