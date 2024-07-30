@@ -12,9 +12,9 @@ const Hero = async () => {
                     title={
                         <>
                             {
-                                'Психолог​ Профориентолог​ Карьерный консультант​ Игропрактик\n'
+                                'Психолог​ Профориентолог​\n Карьерный консультант​ Игропрактик\n'
                             }
-                            <span className="text-primary-500">
+                            <span className="text-primary-500 text-3xl">
                                 Яна Агевнина
                             </span>
                         </>
@@ -31,7 +31,7 @@ const Hero = async () => {
                 <Image
                     src="/assets/images/yana.webp"
                     width="300"
-                    height="420"
+                    height="400"
                     alt="Яна"
                     className="max-sm:absolute max-sm:top-28 max-sm:left-10 max-sm:opacity-35"
                 />

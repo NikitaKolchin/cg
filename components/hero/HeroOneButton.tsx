@@ -12,13 +12,13 @@ const HeroOneButton: FC<HeroOneButtonProps> = ({
     description,
     button,
 }) => (
-    <header className="text-center">
+    <header className="text-center  max-sm:mt-36">
         <h1
-            className={`${lightHouse.variable} font-serif whitespace-pre-line text-3xl font-bold leading-hero text-gray-900`}
+            className={`${lightHouse.variable} font-serif whitespace-pre-line text-xl font-bold leading-hero text-gray-900`}
         >
             {title}
         </h1>
-        <div className="mb-16 mt-4 text-2xl">{description}</div>
+        <div className="mb-16 mt-4 text-xl">{description}</div>
 
         {button}
     </header>
