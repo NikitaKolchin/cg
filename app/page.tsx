@@ -1,7 +1,7 @@
 import { Banner } from '@/components/templates/Banner';
 import { Hero } from '@/components/templates/Hero';
 import { Format } from '@/components/templates/Format';
-import { VerticalFeatures } from '@/components/templates/VerticalFeatures';
+import { Help } from '@/components/templates/Help';
 import { Education } from '@/components/templates/Education';
 import { Experience } from '@/components/templates/Experience';
 import { Achievements } from '@/components/templates/Achievements';
@@ -12,12 +12,12 @@ export default function Home() {
         <main>
             <Hero />
             <Format />
-            <VerticalFeatures />
-            <Education />
+            <Help />
             <Banner />
+            {/* <Education />
             <Experience />
             <Numbers />
-            <Achievements />
+            <Achievements /> */}
         </main>
     );
 }

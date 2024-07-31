@@ -1,36 +1,41 @@
 import { Section } from '@/components/layout/Section';
+import { VerticalFeatureRow } from '../feature/VerticalFeatureRow';
 
 const Format = () => (
     <Section
         title="Формат работы"
         description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
     >
-        <table className="mx-auto border-collapse">
-            <tbody>
-                <tr className="h-56">
-                    <td className="border-2 border-gray-300 p-3">
-                        Психологическое консультирование: помощь в решении
-                        трудных жизненных ситуаций
-                    </td>
-                    <td className="border-2 border-gray-300 p-3">
-                        Профдиагностика и карьерное консультирование: помощь в
-                        выборе профессии и самоопределении, выявление сильных
-                        сторон и зон роста, построение карьерного трека
-                    </td>
-                </tr>
-                <tr className="h-56">
-                    <td className="border-2 border-gray-300 p-3">
-                        Тренинги и мастер-классы: групповая работа по различным
-                        тематикам
-                    </td>
-                    <td className="border-2 border-gray-300 p-3">
-                        Игровые методики:​ Метафорические ассоциативные карты​
+        <VerticalFeatureRow
+            title="Психологическое консультирование​"
+            description="Помощь в решении трудных жизненных ситуаций"
+            image="/assets/images/feature1.webp"
+            imageAlt="First feature alt text"
+        />
+        <VerticalFeatureRow
+            title="Профдиагностика и карьерное консультирование"
+            description="Помощь в выборе профессии и самоопределении, выявление сильных
+                        сторон и зон роста, построение карьерного трека"
+            image="/assets/images/feature2.webp"
+            imageAlt="Second feature alt text"
+            reverse
+        />
+        <VerticalFeatureRow
+            title="Тренинги и мастер-классы"
+            description="Групповая работа по различным
+                        тематикам"
+            image="/assets/images/feature3.webp"
+            imageAlt="Third feature alt text"
+        />
+        <VerticalFeatureRow
+            title="Игровые методики"
+            description="Метафорические ассоциативные карты​
                         Игра «Лила»​ Игра «Ключ к подсознанию»​ Игра
-                        «Профориентатор» и др.​
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        «Профориентатор» и др."
+            image="/assets/images/feature4.webp"
+            imageAlt="First feature alt text"
+            reverse
+        />
     </Section>
 );
 
