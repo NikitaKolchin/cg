@@ -6,13 +6,13 @@ import { Button } from '@/components/ui/button';
 
 const Hero = async () => {
     return (
-        <Section color="bg-gray-300" yPadding="pt-10">
-            <div className="sm:flex max-sm:pb-12">
+        <Section color="bg-gray-300">
+            <div className="sm:flex">
                 <HeroOneButton
                     title={
                         <>
                             {
-                                'Психолог​ Профориентолог​\n Карьерный консультант​ Игропрактик\n'
+                                'Психолог\n​ Профориентолог​\n Карьерный консультант​\n Игропрактик\n'
                             }
                             <span className="text-primary-500 text-3xl">
                                 Яна Агевнина
@@ -30,8 +30,8 @@ const Hero = async () => {
                 />
                 <Image
                     src="/assets/images/yana.webp"
-                    width="300"
-                    height="400"
+                    width="350"
+                    height="470"
                     alt="Яна"
                     className="max-sm:absolute max-sm:top-28 max-sm:left-10 max-sm:opacity-35"
                 />

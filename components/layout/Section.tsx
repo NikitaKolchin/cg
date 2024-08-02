@@ -20,11 +20,11 @@ const Section = ({
     <Tag className={color}>
         <div
             className={`mx-auto max-w-screen-lg px-3 ${
-                yPadding ? yPadding : 'py-16'
+                yPadding ? yPadding : 'py-8'
             }`}
         >
             {(title || description) && (
-                <div className="mb-12 text-center">
+                <div className="text-center">
                     {title && (
                         <h2 className="text-4xl font-bold text-gray-900">
                             {title}
