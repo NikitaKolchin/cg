@@ -6,7 +6,7 @@ on:
 jobs:
 
   build:
-    name: Build4
+    name: Build6
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands on client using key
@@ -16,7 +16,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         script: | 
-          sudo -i  
           cd /srv/www/cg
           git pull
           git status
