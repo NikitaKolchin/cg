@@ -1,0 +1,25 @@
+name: cg
+on: 
+  push:
+    branches:
+      master
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands on client using key
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PASSWORD }}
+        script: | 
+          sudo -i  
+          cd /srv/www/cg
+          git pull
+          git status
+          npm install
+          npm run build
+          systemctl restart cg.service
