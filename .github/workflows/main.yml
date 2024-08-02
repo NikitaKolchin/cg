@@ -6,7 +6,7 @@ on:
 jobs:
 
   build:
-    name: Build2
+    name: Build4
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands on client using key
