@@ -1,11 +1,6 @@
 'use client';
+import SliderCenter from '../shared/slider-center/slider-center';
 import { Section } from '../layout/Section';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import './swiper.css';
 import { useBetterMediaQuery } from '@/hooks/use-better-media-query';
 const data = [
     `Выбор профессионального пути, поиск призвания​`,
@@ -26,20 +21,7 @@ const Help = () => {
     return (
         <Section title="С чем я могу помочь">
             {isTabletOrMobile ? (
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={1}
-                    modules={[Navigation]}
-                    navigation
-                >
-                    {data.map((item, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="bg-light border border-dark rounded-xl w-72 p-2 text-center shadow-xl">
-                                <span className="text-xl">{item}</span>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <SliderCenter data={data} />
             ) : (
                 <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 p-4">
                     {data.map((item, index) => (
