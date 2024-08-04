@@ -54,7 +54,7 @@ const Education = () => (
                                 height={100}
                             />
                             <div>
-                                <Bullet item={item}/>
+                                <Bullet item={item} />
                             </div>
                         </div>
                     </SwiperSlide>
