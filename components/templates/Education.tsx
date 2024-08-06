@@ -46,7 +46,7 @@ const Education = () => (
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <div className="bg-white">
+                        <div className="bg-white max-sm:animate-pulse ">
                             <Image
                                 src={`/assets/images/e${index + 1}.webp`}
                                 alt={item}

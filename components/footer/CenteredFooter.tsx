@@ -10,21 +10,14 @@ type CenteredFooterProps = {
 };
 
 const CenteredFooter = (props: CenteredFooterProps) => (
-    <div className="text-center">
+    <div className="md:flex justify-between items-center text-center">
         {props.logo}
-
-        <nav>
-            <ul className="navbar mt-5 flex flex-row justify-center text-xl font-medium text-gray-800">
-                {props.children}
-            </ul>
-        </nav>
-
-        <div className="mt-8 flex justify-center">
-            <FooterIconList>{props.iconList}</FooterIconList>
+        <div className="text-sm">
+            <FooterCopyright />
         </div>
 
-        <div className="mt-8 text-sm">
-            <FooterCopyright />
+        <div className="flex justify-center">
+            <FooterIconList>{props.iconList}</FooterIconList>
         </div>
     </div>
 );
