@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import Image from 'next/image';
-
+import { useInView } from 'react-intersection-observer';
 import { Section } from '@/components/layout/Section';
 import Bullet from '../ui/bullet';
 
@@ -23,45 +23,54 @@ const data = [
     `Повышение квалификации по направлению «Сексология в
                             психологическом консультировании»`,
 ];
-const Education = () => (
-    <Section
-        title="Мое образование​"
-        description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
-    >
-        <>
-            <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={'auto'}
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }}
-                pagination={true}
-                modules={[EffectCoverflow, Pagination]}
-            >
-                {data.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <div className="bg-white max-sm:animate-pulse ">
-                            <Image
-                                src={`/assets/images/e${index + 1}.webp`}
-                                alt={item}
-                                width={800}
-                                height={100}
-                            />
-                            <div>
-                                <Bullet item={item} />
+const Education = () => {
+    const [inViewRef, inView] = useInView({
+        threshold: 0, // Настройте по необходимости
+        triggerOnce: true, // Запускать анимацию только один раз
+    });
+    console.log(inView);
+    return (
+        <Section
+            title="Мое образование​"
+            description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
+        >
+            <div ref={inViewRef}>
+                <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    }}
+                    pagination={true}
+                    modules={[EffectCoverflow, Pagination]}
+                >
+                    {data.map((item, index) => (
+                        <SwiperSlide key={index}>
+                            <div
+                                className={`bg-white ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
+                            >
+                                <Image
+                                    src={`/assets/images/e${index + 1}.webp`}
+                                    alt={item}
+                                    width={800}
+                                    height={100}
+                                />
+                                <div>
+                                    <Bullet item={item} />
+                                </div>
                             </div>
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </>
-    </Section>
-);
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+        </Section>
+    );
+};
 
 export { Education };

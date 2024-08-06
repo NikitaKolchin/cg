@@ -67,6 +67,15 @@ const config: Config = {
             lineHeight: {
                 hero: '4.5rem',
             },
+            animation: {
+                bounce: 'bounce 1s ease-in-out 2',
+            },
+            keyframes: {
+                bounce: {
+                    '0%, 100%': { transform: 'translateX(0)' },
+                    '50%': { transform: 'translateX(-270px)' },
+                },
+            },
         },
     },
 };
