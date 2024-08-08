@@ -23,45 +23,42 @@ const data = [
                             психологическом консультировании»`,
 ];
 const Education = () => {
-
     return (
         <Section
             title="Мое образование​"
             description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
         >
-                <Swiper
-                    effect={'coverflow'}
-                    grabCursor={true}
-                    centeredSlides={true}
-                    slidesPerView={1.2}
-                    coverflowEffect={{
-                        rotate: 50,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 1,
-                        slideShadows: true,
-                    }}
-                    pagination={true}
-                    modules={[EffectCoverflow, Pagination]}
-                >
-                    {data.map((item, index) => (
-                        <SwiperSlide key={index}>
-                            <div
-                                className={`bg-white`}
-                                >
-                                <div className='flex justify-center'>
-                                    <Image
-                                        src={`/assets/images/e${index + 1}.webp`}
-                                        alt={item}
-                                        width={900}
-                                        height={100}
-                                    />
-                                </div>
-                                    <Bullet item={item} />
+            <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={1.2}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination]}
+            >
+                {data.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <div className={`bg-white`}>
+                            <div className="flex justify-center">
+                                <Image
+                                    src={`/assets/images/e${index + 1}.webp`}
+                                    alt={item}
+                                    width={900}
+                                    height={100}
+                                />
                             </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                            <Bullet item={item} />
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </Section>
     );
 };
