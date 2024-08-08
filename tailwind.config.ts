@@ -68,12 +68,15 @@ const config: Config = {
                 hero: '4.5rem',
             },
             animation: {
-                bounce: 'bounce 1s ease-in-out 2',
+                bounce: 'bounce 2s ease-in-out 1',
             },
             keyframes: {
                 bounce: {
-                    '0%, 100%': { transform: 'translateX(0)' },
-                    '50%': { transform: 'translateX(-270px)' },
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '10%': { transform: 'translateY(-15px)' },
+                    '40%': { transform: 'translateY(10px)' },
+                    '60%': { transform: 'translateY(-7px)' },
+                    '90%': { transform: 'translateY(5px)' },
                 },
             },
         },

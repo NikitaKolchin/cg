@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { CTABanner } from '../cta/CTABanner';
 import { Section } from '../layout/Section';
 import { Button } from '@/components/ui/button';
-
 const Banner = () => (
     <Section>
         <CTABanner
@@ -17,5 +16,4 @@ const Banner = () => (
         />
     </Section>
 );
-
 export { Banner };

@@ -1,5 +1,5 @@
 'use client';
-import SliderCenter from '../shared/slider-center/slider-center';
+import {SliderOverlap} from '@/components/shared';
 import { Section } from '../layout/Section';
 import { useBetterMediaQuery } from '@/hooks/use-better-media-query';
 import Bullet from '../ui/bullet';
@@ -23,7 +23,7 @@ const Help = () => {
     return (
         <Section title="С чем я могу помочь">
             {isTabletOrMobile ? (
-                <SliderCenter data={data} />
+                <SliderOverlap data={data} />
             ) : (
                 <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 p-4">
                     {data.map((item, index) => (

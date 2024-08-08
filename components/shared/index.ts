@@ -1,3 +1,3 @@
-import SliderCenter from './slider-center/slider-center';
+import SliderOverlap from './slider-overlap';
 import { VerticalFeatureRow } from './vertical-feature-row';
-export { SliderCenter, VerticalFeatureRow };
+export { SliderOverlap, VerticalFeatureRow };

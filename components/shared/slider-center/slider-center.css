@@ -1,6 +1,0 @@
-.swiper-wrapper {
-    @apply items-center
-}
-.swiper-slide-active{
-    @apply flex justify-center
-}
