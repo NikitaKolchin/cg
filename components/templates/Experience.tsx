@@ -1,53 +1,35 @@
-import { Section } from '@/components/layout/Section';
+'use client';
+import { SliderOverlap } from '@/components/shared';
+import { Section } from '../layout/Section';
+import { useBetterMediaQuery } from '@/hooks/use-better-media-query';
+import Bullet from '../ui/bullet';
 
-const Experience = () => (
-    <Section
-        title="Мой опыт"
-        description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
-    >
-        <table className="mx-auto border-collapse">
-            <tbody>
-                <tr className="h-56">
-                    <td className="border-2 border-gray-300 p-3">
-                        Более 8 лет опыта работы экспертом по развитию персонала
-                        (HR)
-                    </td>
-                    <td className="border-2 border-gray-300 p-3">
-                        В настоящее время работаю совместно с Областным кадровым
-                        агентством и Молодежным центром карьеры Нижегородской
-                        области (при поддержке КУПНО) в должности карьерного
-                        консультанта
-                    </td>
-                </tr>
-                <tr className="h-56">
-                    <td className="border-2 border-gray-300 p-3">
-                        Работа с персоналом: развитие, мотивация, вовлеченность,
-                        разработка кадровых стратегий, наставничество, подбор,
-                        адаптация
-                    </td>
-                    <td className="border-2 border-gray-300 p-3">
-                        Профориентация школьников, студентов и молодежи
-                    </td>
-                </tr>
-                <tr className="h-56">
-                    <td className="border-2 border-gray-300 p-3">
-                        Психологическая помощь
-                    </td>
-                    <td className="border-2 border-gray-300 p-3">
-                        Помощь при трудоустройстве (составление резюме, поиск
-                        работы, подготовка к собеседованию и т.д.)
-                    </td>
-                </tr>
-                <tr className="h-56">
-                    <td className="border-2 border-gray-300 p-3">
-                        Проведение мастер-классов, тренингов и других
-                        развивающих мероприятий
-                    </td>
-                    <td className="border-2 border-gray-300 p-3"></td>
-                </tr>
-            </tbody>
-        </table>
-    </Section>
-);
+const data = [
+    `Проведено более 100 часов психологических консультаций и
+        50 тренингов на разные тематики​ ​`,
+    `Более 8 лет опыта работы экспертом по развитию персонала (HR)`,
+    `В настоящее время работаю совместно с Областным кадровым
+        агентством и Молодежным центром карьеры Нижегородской
+        области (при поддержке КУПНО) в должности карьерного
+        консультанта`,
+    `Регулярная личная терапия и супервизия`,
+];
+
+const Experience = () => {
+    const isTabletOrMobile = useBetterMediaQuery('(max-width: 500px)');
+    return (
+        <Section title="Мой опыт">
+            {isTabletOrMobile ? (
+                <SliderOverlap data={data} />
+            ) : (
+                <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 p-4">
+                    {data.map((item, index) => (
+                        <Bullet key={index} item={item} />
+                    ))}
+                </div>
+            )}
+        </Section>
+    );
+};
 
 export { Experience };

@@ -24,10 +24,7 @@ const data = [
 ];
 const Education = () => {
     return (
-        <Section
-            title="Мое образование​"
-            description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
-        >
+        <Section title="Мое образование​" description="Я люблю учиться...">
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
