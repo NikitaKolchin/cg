@@ -1,6 +1,6 @@
 'use client';
-import { SliderOverlap } from '@/components/shared';
-import { Section } from '../layout/Section';
+import { SliderOverlap } from '@/components/shared/slider-overlap';
+import { Section } from '../shared/section';
 import { useBetterMediaQuery } from '@/hooks/use-better-media-query';
 import Bullet from '../ui/bullet';
 

@@ -20,4 +20,4 @@ const SliderOverlap: FC<Props> = ({ data }) => {
     );
 };
 
-export default SliderOverlap;
+export { SliderOverlap };

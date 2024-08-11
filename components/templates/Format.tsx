@@ -1,5 +1,5 @@
-import { Section } from '@/components/layout/Section';
-import { VerticalFeatureRow } from '@/components/shared';
+import { Section } from '@/components/shared/section';
+import { VerticalFeatureRow } from '@/components/shared/vertical-feature-row';
 
 const Format = () => (
     <Section

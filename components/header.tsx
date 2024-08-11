@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { Section } from './layout/Section';
-import { NavbarTwoColumns } from './navigation/NavbarTwoColumns';
+import { Section } from './shared/section';
+import { NavbarTwoColumns } from './shared/nav-bar';
 import { auth } from '@/auth';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';

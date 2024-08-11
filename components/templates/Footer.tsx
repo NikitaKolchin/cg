@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { CenteredFooter } from '../footer/CenteredFooter';
-import { Section } from '../layout/Section';
+import { Section } from '../shared/section';
 import { Logo } from '../ui/logo';
 import { SlSocialVkontakte } from 'react-icons/sl';
 import { LiaTelegram } from 'react-icons/lia';

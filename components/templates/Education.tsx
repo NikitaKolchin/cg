@@ -1,61 +1,32 @@
-'use client';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-import Image from 'next/image';
-import { Section } from '@/components/layout/Section';
-import Bullet from '../ui/bullet';
+import { Section } from '@/components/shared/section';
+import { SliderImages } from '../shared/slider-images';
 
 const data = [
-    `Высшее экономическое образование (бакалавриат) –
-                            ННГУ им. Н.И. Лобачевского​`,
-    `Высшее психологическое образование (магистратура) –
-                            РГСУ (г. Москва)​`,
-    `Профессиональная переподготовка по направлению
-                            «Психологическое консультирование и
-                            психодиагностика»​`,
-    // `Профессиональная переподготовка по направлению
-    //                         «Клиническая психология»`,
-    `Повышение квалификации по направлению «Современные
-                            методы профориентации»`,
-    `Повышение квалификации по направлению «Сексология в
-                            психологическом консультировании»`,
+    {
+        text: 'Высшее экономическое образование (бакалавриат) – ННГУ им. Н.И. Лобачевского',
+        fileName: 'e3',
+    },
+    {
+        text: 'Высшее психологическое образование (магистратура) – РГСУ (г. Москва)',
+        fileName: 'e2',
+    },
+    {
+        text: 'Профессиональная переподготовка по направлению «Психологическое консультирование и психодиагностика»',
+        fileName: 'e1',
+    },
+    {
+        text: 'Повышение квалификации по направлению «Современные методы профориентации»',
+        fileName: 'e4',
+    },
+    {
+        text: 'Повышение квалификации по направлению «Сексология в психологическом консультировании»',
+        fileName: 'e5',
+    },
 ];
 const Education = () => {
     return (
         <Section title="Мое образование​" description="Я люблю учиться...">
-            <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={1.2}
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }}
-                pagination={true}
-                modules={[EffectCoverflow, Pagination]}
-            >
-                {data.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <div className={`bg-white`}>
-                            <div className="flex justify-center">
-                                <Image
-                                    src={`/assets/images/e${index + 1}.webp`}
-                                    alt={item}
-                                    width={900}
-                                    height={100}
-                                />
-                            </div>
-                            <Bullet item={item} />
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <SliderImages data={data} />
         </Section>
     );
 };
