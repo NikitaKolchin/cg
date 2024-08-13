@@ -5,8 +5,8 @@ import { auth } from '@/auth';
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'sonner';
 import { AppConfig } from '@/lib/utils';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/templates/Footer';
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
     title: AppConfig.title,

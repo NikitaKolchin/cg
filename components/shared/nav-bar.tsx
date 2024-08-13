@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
-type INavbarProps = {
+type NavbarProps = {
     logo: ReactNode;
     children: ReactNode;
 };
 
-const NavbarTwoColumns = (props: INavbarProps) => (
+const Navbar = (props: NavbarProps) => (
     <nav className="flex flex-wrap items-center justify-between">
         <div>
             <Link href="/">{props.logo}</Link>
@@ -20,4 +20,4 @@ const NavbarTwoColumns = (props: INavbarProps) => (
     </nav>
 );
 
-export { NavbarTwoColumns };
+export { Navbar };
