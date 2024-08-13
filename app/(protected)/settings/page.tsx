@@ -78,7 +78,7 @@ const SettingsPage = () => {
                             cy="5"
                             stroke="currentcolor"
                             fill="none"
-                            stroke-width="5"
+                            strokeWidth="5"
                         />
                     </g>
                 </svg>
