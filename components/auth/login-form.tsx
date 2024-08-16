@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 
 import { LoginSchema } from '@/schema';
-import { Login } from '@/actions/auth/login';
+import { Login } from '@/lib/actions/auth/login';
 import { Social } from './social';
 import { Button } from '../ui/button';
 import { FormError } from '../form-error';

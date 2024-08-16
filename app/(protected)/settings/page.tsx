@@ -24,7 +24,7 @@ import { FormError } from '@/components/form-error';
 
 import { UserRole } from '@prisma/client';
 import { SettingsSchema } from '@/schema';
-import { settings } from '@/actions/auth/settings';
+import { settings } from '@/lib/actions/auth/settings';
 import { FormSuccess } from '@/components/form-sucess';
 
 const SettingsPage = () => {

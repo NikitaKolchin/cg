@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { FormError } from '@/components/form-error';
 import { ResetSchema } from '@/schema';
 import { FormSuccess } from '../form-sucess';
-import { reset } from '@/actions/auth/reset';
+import { reset } from '@/lib/actions/auth/reset';
 
 export const ResetForm = () => {
     const [error, setError] = useState<string | undefined>('');

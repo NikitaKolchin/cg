@@ -5,6 +5,7 @@ import { Navbar } from '../shared/nav-bar';
 import { auth } from '@/auth';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/logo';
+import { SignOut } from '../ui/sign-out';
 
 const Header = async () => {
     const session = await auth();
@@ -14,9 +15,7 @@ const Header = async () => {
             <Navbar logo={<Logo xl />}>
                 <li>
                     {isAuth ? (
-                        <Link href="api/auth/signout">
-                            <Button>Выйти</Button>
-                        </Link>
+                        <SignOut />
                     ) : (
                         <Link href="auth/login">
                             <Button>Войти</Button>

@@ -15,7 +15,7 @@ import {
 import { CardWrapper } from '@/components/auth/card-wrapper';
 import { Button } from '@/components/ui/button';
 import { FormError } from '@/components/form-error';
-import { register } from '@/actions/auth/register';
+import { register } from '@/lib/actions/auth/register';
 import { FormSuccess } from '../form-sucess';
 import { RegisterSchema } from '@/schema';
 
