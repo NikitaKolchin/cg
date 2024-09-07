@@ -31,14 +31,10 @@ const config: Config = {
             '6xl': '4rem',
         },
         extend: {
-            fontFamily: {
-                sans: ['var(--font-sans)'],
-                serif: ['var(--font-serif)'],
-            },
             colors: {
                 light: '#77C6C4',
-                dark: '#045569',
-                normal: '#43606E',
+                dark: '#313131',
+                normal: '#5785A4',
                 sand: '#FBFAF5',
                 white: '#FFFFFF',
                 primary: {

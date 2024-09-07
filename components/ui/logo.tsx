@@ -6,13 +6,13 @@ type LogoProps = {
 };
 
 export const Logo = (props: LogoProps) => {
-    const size = props.xl ? '88' : '64';
+    const size = props.xl ? '64' : '48';
     const fontStyle = props.xl
-        ? 'font-semibold text-3xl'
-        : 'font-semibold text-xl';
+        ? 'font-regular uppercase text-3xl'
+        : 'font-regular uppercase text-xl';
 
     return (
-        <span className={`inline-flex items-center text-gray-900 ${fontStyle}`}>
+        <span className={`inline-flex items-center text-white ${fontStyle}`}>
             <Image
                 src="/assets/images/logo.webp"
                 width={size}

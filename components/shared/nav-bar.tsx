@@ -7,13 +7,13 @@ type NavbarProps = {
 };
 
 const Navbar = (props: NavbarProps) => (
-    <nav className="flex flex-wrap items-center justify-between">
+    <nav className="flex flex-wrap items-center justify-between m-4">
         <div>
             <Link href="/">{props.logo}</Link>
         </div>
 
         <nav>
-            <ul className="navbar flex items-center text-gray-800">
+            <ul className="flex justify-between items-center gap-6 text-white text-2xl max-sm:hidden">
                 {props.children}
             </ul>
         </nav>

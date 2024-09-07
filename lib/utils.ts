@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const AppConfig = {
-    site_name: 'Яна',
+    site_name: 'Яна Агевнина',
     title: 'Яна Агевнина - психолог',
     description:
         'Яна Агевнина, психолог, профориентолог, карьерный консультант​, игропрактик',

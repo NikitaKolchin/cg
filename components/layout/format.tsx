@@ -3,6 +3,7 @@ import { VerticalFeatureRow } from '@/components/shared/vertical-feature-row';
 
 const Format = () => (
     <Section
+        isSkewed={true}
         title="Формат работы"
         description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
     >

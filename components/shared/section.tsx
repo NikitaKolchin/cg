@@ -7,6 +7,7 @@ type SectionProps = {
     children: ReactNode;
     Tag?: keyof JSX.IntrinsicElements;
     color?: string;
+    isSkewed?: boolean;
 };
 
 const Section = ({
@@ -15,11 +16,12 @@ const Section = ({
     title,
     description,
     color,
+    isSkewed,
     children,
 }: SectionProps) => (
-    <Tag className={color}>
+    <Tag className={`${color} ${isSkewed ? 'relative z-10 skewed-top' : ''}`}>
         <div
-            className={`mx-auto max-w-screen-lg px-3 ${
+            className={`mx-auto max-w-screen-xl px-3 ${
                 yPadding ? yPadding : 'py-8'
             }`}
         >
