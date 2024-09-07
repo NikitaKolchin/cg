@@ -1,41 +1,33 @@
-import { lightHouse } from '@/app/fonts';
 import Link from 'next/link';
 import Image from 'next/image';
+import { HeroOneButton } from '../shared/hero-one-button';
 import { Section } from '../shared/section';
 import { Button } from '@/components/ui/button';
 
 const Hero = async () => {
     return (
-        <Section color="bg-gray-300">
-            <div className="sm:flex">
-                <div className="text-center  max-sm:mt-36">
-                    <h1
-                        className={`${lightHouse.variable} font-serif whitespace-pre-line text-xl font-bold leading-hero text-black`}
-                    >
-                        {
-                            'Психолог\n​ Профориентолог​\n Карьерный консультант​\n Игропрактик\n'
-                        }
-                        <span className="text-primary-500 text-3xl">
-                            Яна Агевнина
-                        </span>
-                    </h1>
-                    <div className="mb-8 mt-4 text-xl">
-                        {
-                            'Моя главная задача – раскрыть потенциал и разобраться в чувствах'
-                        }
-                    </div>
-
-                    <Link href="https://creativedesignsguru.com/category/nextjs/">
-                        <Button variant={'secondary'}>Связаться со мной</Button>
-                    </Link>
-                </div>
-
+        <Section color="bg-dark">
+            <div className="sm:flex mb-4">
+                <HeroOneButton
+                    title="Моя главная задача – раскрыть потенциал и разобраться в чувствах"
+                    description={
+                        <div className="py-10">
+                            <div className="shadow-[0px_0px_85px_10px_gray] rounded-3xl bg-opacity-10"></div>
+                            <>Психолог |​ Профориентолог | Игропрактик</>
+                        </div>
+                    }
+                    button={
+                        <Link href="https://creativedesignsguru.com/category/nextjs/">
+                            <Button size={'lg'}>Связаться со мной</Button>
+                        </Link>
+                    }
+                />
                 <Image
-                    src="/assets/images/yana.webp"
-                    width="350"
-                    height="470"
+                    src="/images/yana.png"
+                    width="480"
+                    height="600"
                     alt="Яна"
-                    className="max-sm:absolute max-sm:top-28 max-sm:left-10 max-sm:opacity-35"
+                    className="max-sm:absolute max-sm:top-36 max-sm:left-10 max-sm:opacity-35"
                 />
             </div>
         </Section>
