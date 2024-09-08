@@ -1,9 +1,20 @@
 import { Section } from '@/components/shared/section';
 import { VerticalFeatureRow } from '@/components/shared/vertical-feature-row';
+import { IconList } from '../shared/icon-list';
+import { Button } from '../ui/button';
 
 const Format = () => (
     <Section
         isSkewed={true}
+        beforeElement={
+            <div className="md:hidden h-36 flex flex-col justify-between mb-12">
+                <div className="flex justify-center">
+                    <Button size={'lg'}>Связаться со мной</Button>
+                </div>
+                <IconList color="black" size={48} />
+            </div>
+        }
+        color="bg-light"
         title="Формат работы"
         description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
     >

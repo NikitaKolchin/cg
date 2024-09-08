@@ -32,10 +32,9 @@ const config: Config = {
         },
         extend: {
             colors: {
-                light: '#77C6C4',
+                light: '#D0CFCB',
                 dark: '#313131',
                 normal: '#5785A4',
-                sand: '#FBFAF5',
                 white: '#FFFFFF',
                 primary: {
                     100: '#E6F6FE',

@@ -8,6 +8,7 @@ type SectionProps = {
     Tag?: keyof JSX.IntrinsicElements;
     color?: string;
     isSkewed?: boolean;
+    beforeElement?: ReactNode;
 };
 
 const Section = ({
@@ -17,14 +18,31 @@ const Section = ({
     description,
     color,
     isSkewed,
+    beforeElement,
     children,
 }: SectionProps) => (
-    <Tag className={`${color} ${isSkewed ? 'relative z-10 skewed-top' : ''}`}>
+    <Tag
+        className={`${color} ${
+            isSkewed
+                ? `relative z-10
+            before:absolute
+            before:bg-light
+            before:content-['']
+            before:w-full
+            before:h-full
+            before:-z-10
+            before:origin-top-left
+            before:max-sm:-skew-y-12
+            before:md:-skew-y-6`
+                : ''
+        }`}
+    >
         <div
             className={`mx-auto max-w-screen-xl px-3 ${
                 yPadding ? yPadding : 'py-8'
             }`}
         >
+            {beforeElement}
             {(title || description) && (
                 <div className="text-center">
                     {title && (
