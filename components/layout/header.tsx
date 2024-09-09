@@ -4,6 +4,7 @@ import { Section } from '../shared/section';
 import { Navbar } from '../shared/nav-bar';
 import { auth } from '@/auth';
 import { Logo } from '@/components/ui/logo';
+import { SignOut } from '../ui/sign-out';
 // import { SignOut } from '../ui/sign-out';
 
 const Header = async () => {
@@ -17,7 +18,7 @@ const Header = async () => {
                 <li>Стоимость услуг</li>
                 <li>
                     {isAuth ? (
-                        <Link href="api/auth/signout">Выйти</Link>
+                        <SignOut />
                     ) : (
                         <Link href="auth/login">Войти</Link>
                     )}

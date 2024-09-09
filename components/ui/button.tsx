@@ -10,13 +10,14 @@ const buttonVariants = cva('duration-300 border border-dark rounded-2xl', {
             default:
                 'bg-normal text-white hover:drop-shadow-xl hover:text-opacity-75',
             secondary: 'bg-light text-white hover:bg-dark hover:drop-shadow-md',
-            outline: 'lowercase',
+            outline: 'text-white',
         },
         size: {
             default: 'min-h-12 px-4 py-2',
             sm: 'min-h-10 px-3 text-xs',
             lg: 'min-h-16 px-8 max-w-80 text-2xl rounded-3xl',
             icon: 'h-9 w-9',
+            link: 'p-0',
         },
     },
     defaultVariants: {
