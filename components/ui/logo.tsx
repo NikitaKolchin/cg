@@ -8,7 +8,7 @@ type LogoProps = {
 export const Logo = (props: LogoProps) => {
     const size = props.xl ? '64' : '48';
     const fontStyle = props.xl
-        ? 'font-regular uppercase text-3xl'
+        ? 'font-regular uppercase md:text-3xl max-sm:text-xl'
         : 'font-regular uppercase text-xl';
 
     return (
