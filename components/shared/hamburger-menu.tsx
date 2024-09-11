@@ -18,11 +18,23 @@ const Hamburger: FC<PropsWithChildren> = ({ children }) => {
                 `}
                 ></div>
             </div>
-            <ul
-                className={`${isOpen ? 'top-20 right-2 absolute z-50 bg-light rounded-xl p-2' : 'hidden'}`}
-            >
-                {children}
-            </ul>
+            {isOpen && (
+                <>
+                    <div
+                        onClick={() => setIsOpen(false)}
+                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-30 outline-none focus:outline-none"
+                    >
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                            <ul
+                                className={`bg-light rounded-xl p-3 flex flex-col gap-4 text-2xl`}
+                            >
+                                {children}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="opacity-75 fixed inset-0 z-20 bg-black"></div>
+                </>
+            )}
         </>
     );
 };

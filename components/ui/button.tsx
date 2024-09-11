@@ -10,7 +10,7 @@ const buttonVariants = cva('duration-300 border border-dark rounded-2xl', {
             default:
                 'bg-normal text-white hover:drop-shadow-xl hover:text-opacity-75',
             secondary: 'bg-light text-white hover:bg-dark hover:drop-shadow-md',
-            outline: 'text-white',
+            outline: 'border-none',
         },
         size: {
             default: 'min-h-12 px-4 py-2',
