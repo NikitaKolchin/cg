@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Hamburger } from './hamburger';
+import { TopMenu } from './top-menu';
 
 type NavbarProps = {
     logo: ReactNode;
@@ -14,10 +15,8 @@ const Navbar = (props: NavbarProps) => (
         </div>
 
         <nav>
-            <Hamburger />
-            <ul className="flex justify-between items-center gap-6 text-white text-2xl max-sm:hidden">
-                {props.children}
-            </ul>
+            <TopMenu>{props.children}</TopMenu>
+            <Hamburger>{props.children}</Hamburger>
         </nav>
     </nav>
 );
