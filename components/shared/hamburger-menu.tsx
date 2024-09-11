@@ -26,13 +26,13 @@ const Hamburger: FC<PropsWithChildren> = ({ children }) => {
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             <ul
-                                className={`bg-light rounded-xl p-3 flex flex-col gap-4 text-2xl`}
+                                className={`bg-dark rounded-xl p-4 flex flex-col gap-5 text-3xl text-gray-300`}
                             >
                                 {children}
                             </ul>
                         </div>
                     </div>
-                    <div className="opacity-75 fixed inset-0 z-20 bg-black"></div>
+                    <div className="opacity-85 fixed inset-0 z-20 bg-gray-800"></div>
                 </>
             )}
         </>
