@@ -64,6 +64,7 @@ const config: Config = {
             },
             animation: {
                 bounce: 'bounce 2s ease-in-out 1',
+                fadeIn: 'fadeIn 0.5s ease-out',
             },
             keyframes: {
                 bounce: {
@@ -72,6 +73,10 @@ const config: Config = {
                     '40%': { transform: 'translateY(10px)' },
                     '60%': { transform: 'translateY(-7px)' },
                     '90%': { transform: 'translateY(5px)' },
+                },
+                fadeIn: {
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
             },
         },
