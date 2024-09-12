@@ -1,5 +1,6 @@
 'use client';
 import { FC, PropsWithChildren, useState } from 'react';
+import { Modal } from './modal';
 const Hamburger: FC<PropsWithChildren> = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -19,21 +20,13 @@ const Hamburger: FC<PropsWithChildren> = ({ children }) => {
                 ></div>
             </div>
             {isOpen && (
-                <>
-                    <div
-                        onClick={() => setIsOpen(false)}
-                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-30 outline-none focus:outline-none"
+                <Modal closeWindow={() => setIsOpen(false)} isOnTop>
+                    <ul
+                        className={`bg-dark rounded-xl p-4 flex flex-col gap-5 text-3xl text-gray-300`}
                     >
-                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                            <ul
-                                className={`bg-dark rounded-xl p-4 flex flex-col gap-5 text-3xl text-gray-300`}
-                            >
-                                {children}
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="opacity-85 fixed inset-0 z-20 bg-gray-800"></div>
-                </>
+                        {children}
+                    </ul>
+                </Modal>
             )}
         </>
     );
