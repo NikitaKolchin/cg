@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.szh-accordion__item-content {
+    transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
 @layer utilities {
     .text-balance {
         text-wrap: balance;
@@ -10,6 +14,7 @@
     .hamburger-toggle {
         @apply [&>div]:h-0 [&>div]:bg-white [&>div]:before:translate-y-0 [&>div]:before:rotate-45 [&>div]:after:translate-y-0 [&>div]:after:-rotate-45;
     }
+
     .skewed-bottom::after {
         content: '';
         position: absolute;
@@ -21,4 +26,5 @@
         transform: skewY(-5deg);
         transform-origin: top left;
     }
+
 }

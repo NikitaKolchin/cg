@@ -23,7 +23,12 @@ const Format = () => (
         title="Формат работы"
         description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
     >
-        <Accordion className="border-t-2 border-gray-700" allowMultiple>
+        <Accordion
+            className="border-t-2 border-gray-700"
+            allowMultiple
+            transition
+            transitionTimeout={250}
+        >
             {formatData.map(({ header, items }) => (
                 <FormatItem key={header} header={header} items={items} />
             ))}

@@ -7,7 +7,7 @@ type FormatItemProps = {
 };
 const FormatItem: FC<FormatItemProps> = ({ header, items }) => (
     <AccordionItem
-        className="border-b-2 border-gray-700"
+        className="py-2 border-b-2 border-gray-700"
         buttonProps={{
             className: 'w-full flex justify-between items-center',
         }}
