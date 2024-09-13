@@ -24,7 +24,7 @@ const Format = () => (
         description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
     >
         <Accordion
-            className="border-t-2 border-gray-700"
+            className="border-t-2 border-gray-700 md:mb-24 max-sm:mb-12"
             allowMultiple
             transition
             transitionTimeout={250}
