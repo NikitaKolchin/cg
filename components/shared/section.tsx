@@ -44,14 +44,20 @@ const Section = ({
         >
             {beforeElement}
             {(title || description) && (
-                <div className="text-center">
+                <div
+                    className={
+                        beforeElement
+                            ? `text-center ${yPadding}`
+                            : 'text-center'
+                    }
+                >
                     {title && (
                         <h2 className="text-4xl font-bold text-gray-900">
                             {title}
                         </h2>
                     )}
                     {description && (
-                        <div className="mt-4 text-xl md:px-20">
+                        <div className="mt-4 text-xl md:px-20 text-gray-800">
                             {description}
                         </div>
                     )}
