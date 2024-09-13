@@ -24,7 +24,7 @@ const Experience = () => {
             ) : (
                 <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 p-4">
                     {data.map((item, index) => (
-                        <Bullet key={index} item={item} />
+                        <Bullet key={index} item={item} index={index} />
                     ))}
                 </div>
             )}

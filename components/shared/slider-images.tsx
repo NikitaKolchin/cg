@@ -31,7 +31,7 @@ const SliderImages: FC<Props> = ({ data }) => {
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
         >
-            {data.map((item) => (
+            {data.map((item, index) => (
                 <SwiperSlide key={item.fileName}>
                     <div className={`bg-white`}>
                         <div className="flex justify-center">
@@ -42,7 +42,7 @@ const SliderImages: FC<Props> = ({ data }) => {
                                 height={100}
                             />
                         </div>
-                        <Bullet item={item.text} />
+                        <Bullet item={item.text} index={index} />
                     </div>
                 </SwiperSlide>
             ))}
