@@ -33,18 +33,15 @@ const SliderImages: FC<Props> = ({ data }) => {
                         <div className="flex justify-center">
                             <Image
                                 className="align-middle"
-                                src={`/images/${item.fileName}.png`}
+                                src={`/images/${item.fileName}.webp`}
                                 alt={item.text}
                                 width={
-                                    item.fileName === 'e3'
-                                        ? isMobile
-                                            ? 200
-                                            : 420
-                                        : item.fileName === 'e1'
-                                          ? 860
-                                          : 800
+                                    item.fileName === 'e4' ||
+                                    item.fileName === 'e5'
+                                        ? 820
+                                        : 880
                                 }
-                                height={item.fileName === 'e3' ? 800 : 600}
+                                height={600}
                             />
                         </div>
                     </div>
