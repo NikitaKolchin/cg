@@ -12,8 +12,8 @@ export default function Home() {
             <Format />
             <Help />
             <Experience />
-            <Banner />
             <Education />
+            <Banner />
         </main>
     );
 }

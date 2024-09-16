@@ -1,11 +1,12 @@
 'use client';
 import { FC } from 'react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import Image from 'next/image';
-import Bullet from '../ui/bullet';
+import { useBetterMediaQuery } from '@/hooks/use-better-media-query';
 
 type Props = {
     data: Array<{
@@ -15,34 +16,37 @@ type Props = {
 };
 
 const SliderImages: FC<Props> = ({ data }) => {
+    const isMobile = useBetterMediaQuery('(max-width: 480px)');
     return (
         <Swiper
-            effect={'coverflow'}
             grabCursor={true}
             centeredSlides={true}
-            slidesPerView={1.2}
-            coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            }}
-            pagination={true}
-            modules={[EffectCoverflow, Pagination]}
+            spaceBetween={10}
+            slidesPerView={isMobile ? 1.15 : 1}
+            pagination={!isMobile}
+            navigation={!isMobile}
+            modules={[Pagination, Navigation]}
         >
-            {data.map((item, index) => (
+            {data.map((item) => (
                 <SwiperSlide key={item.fileName}>
                     <div className={`bg-white`}>
                         <div className="flex justify-center">
                             <Image
-                                src={`/assets/images/${item.fileName}.webp`}
+                                className="align-middle"
+                                src={`/images/${item.fileName}.png`}
                                 alt={item.text}
-                                width={900}
-                                height={100}
+                                width={
+                                    item.fileName === 'e3'
+                                        ? isMobile
+                                            ? 200
+                                            : 420
+                                        : item.fileName === 'e1'
+                                          ? 860
+                                          : 800
+                                }
+                                height={item.fileName === 'e3' ? 800 : 600}
                             />
                         </div>
-                        <Bullet item={item.text} index={index} />
                     </div>
                 </SwiperSlide>
             ))}
