@@ -11,9 +11,9 @@ export default function Home() {
             <Hero />
             <Format />
             <Help />
+            <Experience />
             <Banner />
             <Education />
-            <Experience />
         </main>
     );
 }
