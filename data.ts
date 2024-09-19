@@ -89,3 +89,34 @@ export const educationData = [
         fileName: 'e5',
     },
 ];
+
+export const costData = [
+    {
+        title: 'Психологическое консультирование',
+        description: '90 минут',
+        cost: '3 000 ₽',
+        note: '',
+        strip: '',
+    },
+    {
+        title: 'Профдиагностика и карьерное консультирование',
+        description: '90 минут',
+        cost: '3 000 ₽',
+        note: '',
+        strip: 'тест в подарок',
+    },
+    {
+        title: 'Тренинги и мастер-классы',
+        description: 'от 2-х часов, до 10 человек',
+        cost: 'от 5 000 ₽',
+        note: '*стоимость обсуждается индивидуально',
+        strip: '',
+    },
+    {
+        title: 'Игровые методики',
+        description: 'с человека, до 3-х часов',
+        cost: '4 000 ₽',
+        note: '',
+        strip: '',
+    },
+];

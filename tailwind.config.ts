@@ -36,6 +36,7 @@ const config: Config = {
                 dark: '#313131',
                 normal: '#5785A4',
                 white: '#FFFFFF',
+                clear: '#F1F1F1',
                 primary: {
                     100: '#E6F6FE',
                     200: '#C0EAFC',

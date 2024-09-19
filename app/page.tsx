@@ -4,6 +4,7 @@ import { Format } from '@/components/layout/format';
 import { Help } from '@/components/layout/help';
 import { Education } from '@/components/layout/education';
 import { Experience } from '@/components/layout/experience';
+import { Cost } from '@/components/layout/cost';
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
             <Help />
             <Experience />
             <Education />
+            <Cost />
             <Banner />
         </main>
     );
