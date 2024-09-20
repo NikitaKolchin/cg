@@ -18,7 +18,7 @@ const Footer = () => {
     const { title } = AppConfig;
 
     return (
-        <Section color="bg-gray-100" Tag="footer">
+        <Section color="bg-dark" Tag="footer">
             <div className="flex max-sm:flex-col justify-between items-center text-center">
                 <Logo xl />
                 <p className="text-sm">

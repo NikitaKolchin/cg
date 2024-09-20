@@ -46,6 +46,7 @@ const Cost = () => {
                                                 -translate-y-[70%]
                                                 -translate-x-[40%]
                                                 z-10
+                                                text-lg
                                                 bg-normal"
                                 >
                                     <div>{item.strip.split('\n')?.[0]}</div>
