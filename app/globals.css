@@ -6,36 +6,6 @@
     transition: height 0.25s cubic-bezier(0, 0, 0, 1);
 }
 
-.container-skewed {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.diagonal-banner {
-    position: absolute;
-    top: 90%;
-    left: 25%;
-    width: 80%;
-    transform: translate(-50%, -50%) rotate(20deg); /* Поворачиваем ленту */
-    color: white;
-    text-align: center;
-    white-space: nowrap;
-    z-index: 1; /* Лента будет поверх текста */
-}
-
-.diagonal-banner span {
-    display: inline-block;
-    padding: 0 20px;
-}
-
-.text-content {
-    position: relative;
-    z-index: 0; /* Основной текст будет под лентой */
-    color: black;
-    font-size: 18px;
-}
-
 @layer utilities {
     .text-balance {
         text-wrap: balance;

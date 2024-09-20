@@ -13,9 +13,9 @@ const Cost = () => {
                 {costData.map((item, index) => (
                     <div
                         key={index}
-                        className="container-skewed shadow-gray-500 shadow-lg rounded-3xl border-2 border-normal bg-clear text-center"
+                        className="relative w-full overflow-hidden shadow-gray-500 shadow-lg rounded-3xl border-2 border-normal bg-clear text-center"
                     >
-                        <div className="text-content flex flex-col justify-between gap-16">
+                        <div className="relative z-0 flex flex-col justify-between gap-16">
                             <h2 className="text-3xl text-black font-semibold">
                                 {item.title}
                             </h2>
@@ -31,8 +31,24 @@ const Cost = () => {
                                 {item.note}
                             </span>
                             {item.strip && (
-                                <div className="diagonal-banner bg-normal">
-                                    <span>{item.strip}</span>
+                                <div
+                                    className=" absolute 
+                                                top-[90%]
+                                                max-sm:left-[15%]
+                                                md:left-[10%]
+                                                max-sm:w-[120%]
+                                                md:w-[80%]
+                                                text-white
+                                                align-middle
+                                                whitespace-nowrap
+                                                rotate-[20deg]
+                                                -translate-y-[70%]
+                                                -translate-x-[40%]
+                                                z-10
+                                                bg-normal"
+                                >
+                                    <div>{item.strip.split('\n')?.[0]}</div>
+                                    <div>{item.strip.split('\n')?.[1]}</div>
                                 </div>
                             )}
                         </div>

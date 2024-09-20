@@ -103,7 +103,7 @@ export const costData = [
         description: '90 минут',
         cost: '3 000 ₽',
         note: '',
-        strip: 'тест в подарок',
+        strip: 'диагностический\n тест в подарок',
     },
     {
         title: 'Тренинги и мастер-классы',
