@@ -14,10 +14,11 @@ export const Logo = (props: LogoProps) => {
     return (
         <span className={`inline-flex items-center text-white ${fontStyle}`}>
             <Image
-                src="/assets/images/logo.webp"
+                src="/favicon.svg"
                 width={size}
                 height={size}
                 alt="logo"
+                className="p-4"
             />
             {AppConfig.site_name}
         </span>
