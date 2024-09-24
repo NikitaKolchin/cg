@@ -14,7 +14,7 @@ export const Logo = (props: LogoProps) => {
     return (
         <span className={`inline-flex items-center text-white ${fontStyle}`}>
             <Image
-                src="/favicon.svg"
+                src="/images/icon.svg"
                 width={size}
                 height={size}
                 alt="logo"
