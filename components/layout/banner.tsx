@@ -9,7 +9,9 @@ const Banner = () => (
             title="Я познакомлю вас с миром профессий и возможностей"
             button={
                 <Link href="https://creativedesignsguru.com/category/nextjs/">
-                    <Button>Записаться</Button>
+                    <Button size={'link'} className="w-full h-full">
+                        Записаться
+                    </Button>
                 </Link>
             }
         />
