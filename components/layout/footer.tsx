@@ -1,40 +1,25 @@
-import Link from 'next/link';
-import { AppConfig } from '@/lib/utils';
-
 import { Section } from '../shared/section';
 import { Logo } from '../ui/logo';
-import { SlSocialVkontakte } from 'react-icons/sl';
-import { LiaTelegram } from 'react-icons/lia';
-import { LiaInstagram } from 'react-icons/lia';
-
-const socialIcons = [
-    { name: 'vk', component: <SlSocialVkontakte /> },
-    { name: 'telegram', component: <LiaTelegram /> },
-    { name: 'instagram', component: <LiaInstagram /> },
-];
+import { IconList } from '../shared/icon-list';
+import { Menu } from '../shared/menu';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
-    const { title } = AppConfig;
-
     return (
         <Section color="bg-dark" Tag="footer">
-            <div className="flex max-sm:flex-col justify-between items-center text-center">
-                <Logo xl />
-                <p className="text-sm">
-                    © {currentYear} {title}
-                </p>
-
-                <div className="flex justify-center">
-                    <div className="footer-icon-list flex flex-wrap">
-                        <div className="flex w-24 h-10 justify-between items-center">
-                            {socialIcons.map((icon) => (
-                                <Link href="#" key={icon.name}>
-                                    {icon.component}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
+            <div className="flex max-sm:flex-col-reverse max-sm:gap-8 justify-between md:items-center md:text-center">
+                <Logo isTop={false} />
+                <Menu isTop={false} />
+                <div className="md:hidden flex flex-col gap-4">
+                    <IconList color="white" size={46} alignLeft={true} />
+                    <span className="text-white text-3xl">
+                        +7 (999) 072-07-17
+                    </span>
+                </div>
+                <div className="max-sm:hidden flex flex-col gap-4">
+                    <IconList color="white" size={28} />
+                    <span className="text-white text-xl">
+                        +7 (999) 072-07-17
+                    </span>
                 </div>
             </div>
         </Section>

@@ -9,6 +9,7 @@ type SectionProps = {
     color?: string;
     isSkewed?: boolean;
     beforeElement?: ReactNode;
+    id?: string;
 };
 
 const Section = ({
@@ -19,6 +20,7 @@ const Section = ({
     color,
     isSkewed,
     beforeElement,
+    id,
     children,
 }: SectionProps) => (
     <Tag
@@ -38,6 +40,7 @@ const Section = ({
         }`}
     >
         <div
+            id={id}
             className={`mx-auto max-w-screen-xl px-3 ${
                 yPadding ? yPadding : 'py-8'
             }`}

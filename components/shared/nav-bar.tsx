@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Hamburger } from './hamburger-menu';
-import { Menu } from './line-menu';
+import { Menu } from './menu';
 
 type NavbarProps = {
     logo: ReactNode;
@@ -15,7 +15,7 @@ const Navbar = (props: NavbarProps) => (
         </div>
 
         <nav>
-            <Menu>{props.children}</Menu>
+            <Menu isTop>{props.children}</Menu>
             <Hamburger>{props.children}</Hamburger>
         </nav>
     </nav>

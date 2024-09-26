@@ -11,10 +11,7 @@ const Header = async () => {
     const isAuth = !!session;
     return (
         <Section color="bg-dark" yPadding="py-1" Tag="header">
-            <Navbar logo={<Logo xl />}>
-                <li>Формат работы</li>
-                <li>Мой опыт</li>
-                <li>Стоимость услуг</li>
+            <Navbar logo={<Logo isTop />}>
                 <li>
                     {isAuth ? (
                         <SignOut />

@@ -22,6 +22,7 @@ const Format = () => (
         color="bg-light"
         title="Формат работы"
         description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
+        id="format"
     >
         <Accordion
             className="border-t-2 border-gray-700 md:mb-24 max-sm:mb-12"

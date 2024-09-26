@@ -6,9 +6,12 @@ import { SlSocialVkontakte } from 'react-icons/sl';
 type IconListProps = {
     color?: string;
     size?: number;
+    alignLeft?: boolean;
 };
-const IconList: FC<IconListProps> = ({ color, size }) => (
-    <div className="flex justify-center md:gap-10 max-sm:gap-16">
+const IconList: FC<IconListProps> = ({ color, size, alignLeft }) => (
+    <div
+        className={`flex ${alignLeft ? 'justify-start' : 'justify-center'} md:gap-10 max-sm:gap-16 max-sm:text-sm`}
+    >
         <Link href="#">
             <SlSocialVkontakte size={size} color={color} />
         </Link>

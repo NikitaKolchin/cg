@@ -17,8 +17,10 @@ const CTABanner = (props: CTABannerProps) => {
             ref={inViewRef}
             className={`flex flex-col text-center gap-4 sm:items-center sm:justify-between sm:p-12 sm:text-left`}
         >
-            <div className="text-xl">
-                <div className="text-white">{props.title}</div>
+            <div className="text-xl py-8 md:w-1/2 text-center">
+                <div className="text-white md:text-3xl max-sm:text-2xl">
+                    {props.title}
+                </div>
             </div>
             <div
                 className={`mx-auto relative max-sm:w-full md:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
@@ -37,12 +39,11 @@ const CTABanner = (props: CTABannerProps) => {
                     placeholder="Ваш E-mail"
                     required
                 />
-                <div className="absolute md:left-1/2 md:w-1/2 max-sm:w-1/3 max-sm:left-2/3 inset-0  rounded-full border">
+                <div className="absolute w-1/3 left-2/3 inset-0  rounded-full border">
                     {' '}
                     {props.button}
                 </div>
             </div>
-            {/* <div className="whitespace-no-wrap"></div> */}
         </div>
     );
 };

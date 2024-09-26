@@ -4,6 +4,7 @@ import { Section } from '../shared/section';
 const Cost = () => {
     return (
         <Section
+            id="cost"
             title="Стоимость услуг"
             description="С помощью различных практик мы мягко и бережно погружаемся в глубины нашего сознания"
             color="bg-light"

@@ -3,7 +3,7 @@ import { Section } from '../shared/section';
 
 const Experience = () => {
     return (
-        <Section title="Мой опыт">
+        <Section title="Мой опыт" id="experience">
             <div className="pt-12 md:grid md:grid-cols-2 md:gap-16 max-sm:flex max-sm:flex-col max-sm:gap-4">
                 {experienceData.map((item, index) => (
                     <div
