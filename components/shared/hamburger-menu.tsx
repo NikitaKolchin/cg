@@ -1,6 +1,8 @@
 'use client';
 import { FC, PropsWithChildren, useState } from 'react';
 import { Modal } from './modal';
+import { menuData } from '@/data';
+import Link from 'next/link';
 const Hamburger: FC<PropsWithChildren> = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -24,6 +26,12 @@ const Hamburger: FC<PropsWithChildren> = ({ children }) => {
                     <ul
                         className={`bg-dark rounded-xl p-4 flex flex-col gap-5 text-3xl text-gray-300`}
                     >
+                        {' '}
+                        {menuData.map(({ title, link }) => (
+                            <li key={link}>
+                                <Link href={link}>{title}</Link>
+                            </li>
+                        ))}
                         {children}
                     </ul>
                 </Modal>
