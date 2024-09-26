@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { menuData } from '@/data';
-import Link from 'next/link';
+import MenuLink from '../ui/menu-link';
 
 type MenuProps = {
     isTop: boolean;
@@ -13,9 +13,7 @@ const Menu: FC<MenuProps & PropsWithChildren> = ({ isTop, children }) => {
             className={`flex ${style} justify-between items-center text-white  max-sm:hidden`}
         >
             {menuData.map(({ title, link }) => (
-                <li key={link}>
-                    <Link href={link}>{title}</Link>
-                </li>
+                <MenuLink key={link} title={title} link={link} />
             ))}
             {children}
         </ul>

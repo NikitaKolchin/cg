@@ -2,7 +2,7 @@
 import { FC, PropsWithChildren, useState } from 'react';
 import { Modal } from './modal';
 import { menuData } from '@/data';
-import Link from 'next/link';
+import MenuLink from '../ui/menu-link';
 const Hamburger: FC<PropsWithChildren> = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -28,9 +28,7 @@ const Hamburger: FC<PropsWithChildren> = ({ children }) => {
                     >
                         {' '}
                         {menuData.map(({ title, link }) => (
-                            <li key={link}>
-                                <Link href={link}>{title}</Link>
-                            </li>
+                            <MenuLink key={link} title={title} link={link} />
                         ))}
                         {children}
                     </ul>
