@@ -14,7 +14,7 @@ const Cost = () => {
                 {costData.map((item, index) => (
                     <div
                         key={index}
-                        className="relative w-full py-8 overflow-hidden shadow-gray-500 shadow-lg rounded-3xl border-2 border-normal bg-clear text-center"
+                        className="relative w-full py-8 overflow-hidden shadow-gray-500 shadow-lg rounded-3xl border-2 border-normal bg-clear text-center z-20"
                     >
                         <div className="relative z-0 flex flex-col justify-between gap-8">
                             <h2 className="text-3xl text-black font-semibold">

@@ -9,7 +9,7 @@ import { FormatItem } from '../shared/format-item';
 
 const Format = () => (
     <Section
-        isSkewed={true}
+        isSkewedMinus={true}
         beforeElement={
             <div className="md:hidden h-36 flex flex-col justify-between mb-12">
                 <div className="flex justify-center">

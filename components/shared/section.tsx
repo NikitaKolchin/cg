@@ -7,7 +7,8 @@ type SectionProps = {
     children: ReactNode;
     Tag?: keyof JSX.IntrinsicElements;
     color?: string;
-    isSkewed?: boolean;
+    isSkewedMinus?: boolean;
+    isSkewedPlus?: boolean;
     beforeElement?: ReactNode;
     id?: string;
 };
@@ -18,14 +19,15 @@ const Section = ({
     title,
     description,
     color,
-    isSkewed,
+    isSkewedMinus,
+    isSkewedPlus,
     beforeElement,
     id,
     children,
 }: SectionProps) => (
     <Tag
         className={`${color} ${
-            isSkewed
+            isSkewedMinus
                 ? `relative z-10
             before:absolute
             before:bg-light
@@ -36,7 +38,20 @@ const Section = ({
             before:origin-top-left
             before:max-sm:-skew-y-12
             before:md:-skew-y-6`
-                : ''
+                : isSkewedPlus
+                  ? `
+                  relative z-10
+                  before:absolute
+                  before:bg-dark
+                  before:content-['']
+                  before:w-full
+                  before:h-full
+                  before:-z-10
+                  before:bottom-[30%]
+                  before:max-sm:skew-y-12
+                  before:md:skew-y-6
+                  `
+                  : ''
         }`}
     >
         <div
