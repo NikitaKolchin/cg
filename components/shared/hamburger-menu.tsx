@@ -9,7 +9,7 @@ const Hamburger: FC<PropsWithChildren> = ({ children }) => {
         <>
             <div
                 onClick={() => setIsOpen((prev) => !prev)}
-                className={`${isOpen ? 'hamburger-toggle' : ''} grid place-content-center w-20 h-20 p-6 mx-auto md:hidden`}
+                className={`${isOpen ? 'hamburger-toggle' : ''} grid place-content-center w-20 h-20 p-6 mx-auto sm:hidden`}
             >
                 <div
                     className={`

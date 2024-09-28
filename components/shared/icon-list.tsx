@@ -10,7 +10,7 @@ type IconListProps = {
 };
 const IconList: FC<IconListProps> = ({ color, size, alignLeft }) => (
     <div
-        className={`flex ${alignLeft ? 'justify-start' : 'justify-center'} md:gap-10 max-sm:gap-16 max-sm:text-sm`}
+        className={`flex ${alignLeft ? 'justify-start' : 'justify-center'} sm:gap-10 max-sm:gap-16 max-sm:text-sm`}
     >
         <Link href="#">
             <SlSocialVkontakte size={size} color={color} />

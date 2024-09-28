@@ -14,7 +14,7 @@ const FormatItem: FC<FormatItemProps> = ({ header, items }) => (
         header={({ state }) => (
             <div className="flex justify-between items-center text-normal w-full ">
                 <div className="flex items-start text-left">
-                    <span className="md:text-4xl max-sm:text-2xl font-bold">
+                    <span className="sm:text-4xl max-sm:text-2xl font-bold">
                         {header}
                     </span>
                 </div>

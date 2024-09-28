@@ -37,7 +37,7 @@ const Section = ({
             before:-z-10
             before:origin-top-left
             before:max-sm:-skew-y-12
-            before:md:-skew-y-6`
+            before:sm:-skew-y-6`
                 : isSkewedPlus
                   ? `
                   relative z-10
@@ -49,7 +49,7 @@ const Section = ({
                   before:-z-10
                   before:bottom-[30%]
                   before:max-sm:skew-y-12
-                  before:md:skew-y-6
+                  before:sm:skew-y-6
                   `
                   : ''
         }`}
@@ -75,7 +75,7 @@ const Section = ({
                         </h2>
                     )}
                     {description && (
-                        <div className="mt-4 text-xl md:px-20 text-gray-800">
+                        <div className="mt-4 text-xl sm:px-20 text-gray-800">
                             {description}
                         </div>
                     )}

@@ -10,7 +10,7 @@ const Cost = () => {
             color="bg-light"
             yPadding="py-16"
         >
-            <div className="pt-16 md:grid md:grid-cols-2 md:gap-16 max-sm:flex max-sm:flex-col max-sm:gap-4 z-10">
+            <div className="pt-16 sm:grid sm:grid-cols-2 sm:gap-16 max-sm:flex max-sm:flex-col max-sm:gap-4 z-10">
                 {costData.map((item, index) => (
                     <div
                         key={index}
@@ -35,11 +35,11 @@ const Cost = () => {
                                 <div
                                     className=" absolute 
                                                 max-sm:top-[95%]
-                                                md:top-[90%]
-                                                md:left-[10%]
+                                                sm:top-[90%]
+                                                sm:left-[10%]
                                                 max-sm:left-[15%]
                                                 max-sm:w-[120%]
-                                                md:w-[80%]
+                                                sm:w-[80%]
                                                 text-white
                                                 align-middle
                                                 whitespace-nowrap

@@ -9,7 +9,7 @@ type NavbarProps = {
 };
 
 const Navbar = (props: NavbarProps) => (
-    <nav className="flex flex-wrap items-center justify-between md:m-4">
+    <nav className="flex flex-wrap items-center justify-between sm:m-4">
         <div>
             <Link href="/">{props.logo}</Link>
         </div>

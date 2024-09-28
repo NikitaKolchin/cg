@@ -17,13 +17,13 @@ const CTABanner = (props: CTABannerProps) => {
             ref={inViewRef}
             className={`flex flex-col text-center gap-4 sm:items-center sm:justify-between sm:p-12 sm:text-left`}
         >
-            <div className="text-xl md:py-8 md:w-1/2 text-center">
-                <div className="text-white md:text-3xl max-sm:text-2xl">
+            <div className="text-xl sm:py-8 sm:w-1/2 text-center">
+                <div className="text-white sm:text-3xl max-sm:text-2xl">
                     {props.title}
                 </div>
             </div>
             <div
-                className={`mx-auto relative max-sm:w-full md:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
+                className={`mx-auto relative max-sm:w-full sm:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
             >
                 <input
                     type="email"

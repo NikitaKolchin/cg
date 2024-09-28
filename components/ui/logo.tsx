@@ -9,8 +9,8 @@ type LogoProps = {
 export const Logo: FC<LogoProps> = ({ isTop }) => {
     const size = isTop ? '64' : '24';
     const style = isTop
-        ? 'font-regular uppercase md:text-3xl max-sm:text-xl inline-flex items-center'
-        : 'font-regular uppercase md:text-xl max-sm:text-sm md:flex md:flex-col max-sm:inline-flex max-sm:items-center';
+        ? 'font-regular uppercase sm:text-3xl max-sm:text-xl inline-flex items-center'
+        : 'font-regular uppercase sm:text-xl max-sm:text-sm sm:flex sm:flex-col max-sm:inline-flex max-sm:items-center';
     const imagePadding = isTop ? 'p-4' : 'py-4';
     const textPadding = isTop ? '' : 'max-sm:pl-2';
     return (

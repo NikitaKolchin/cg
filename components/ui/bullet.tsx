@@ -18,7 +18,7 @@ const Bullet: FC<Props> = ({ item, index }) => {
                 height={60}
             />{' '}
             <span
-                className={`text-xl text-center ${index === 6 ? 'md:w-1/3' : ''}`}
+                className={`text-xl text-center ${index === 6 ? 'sm:w-1/3' : ''}`}
             >
                 {item}
             </span>
