@@ -11,7 +11,7 @@ const Format = () => (
     <Section
         isSkewedMinus={true}
         beforeElement={
-            <div className="sm:hidden h-36 flex flex-col justify-between mb-12">
+            <div className="xl:hidden h-36 flex flex-col justify-between mb-12">
                 <div className="flex justify-center">
                     <Button size={'lg'}>Связаться со мной</Button>
                 </div>

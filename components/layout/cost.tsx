@@ -35,11 +35,14 @@ const Cost = () => {
                                 <div
                                     className=" absolute 
                                                 max-sm:top-[95%]
-                                                sm:top-[90%]
-                                                sm:left-[10%]
                                                 max-sm:left-[15%]
                                                 max-sm:w-[120%]
-                                                sm:w-[80%]
+                                                sm:top-[95%]
+                                                sm:left-[12%]
+                                                sm:w-[110%]
+                                                md:top-[95%]
+                                                md:left-[15%]
+                                                md:w-[95%]
                                                 text-white
                                                 align-middle
                                                 whitespace-nowrap

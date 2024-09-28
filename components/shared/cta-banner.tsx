@@ -15,7 +15,7 @@ const CTABanner = (props: CTABannerProps) => {
     return (
         <div
             ref={inViewRef}
-            className={`flex flex-col text-center gap-4 sm:items-center sm:justify-between sm:p-12 sm:text-left`}
+            className={`flex flex-col text-center gap-4 sm:items-center sm:justify-between sm:px-12 sm:text-left`}
         >
             <div className="text-xl sm:py-8 sm:w-1/2 text-center">
                 <div className="text-white sm:text-3xl max-sm:text-2xl">

@@ -37,7 +37,8 @@ const Section = ({
             before:-z-10
             before:origin-top-left
             before:max-sm:-skew-y-12
-            before:sm:-skew-y-6`
+            before:sm:-skew-y-6
+            before:2xl:-skew-y-3`
                 : isSkewedPlus
                   ? `
                   relative z-10
@@ -50,6 +51,7 @@ const Section = ({
                   before:bottom-[30%]
                   before:max-sm:skew-y-12
                   before:sm:skew-y-6
+                  before:2xl:skew-y-3
                   `
                   : ''
         }`}
