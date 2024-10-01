@@ -15,25 +15,19 @@ const NewVerificationForm = () => {
 
     const token = searchParams.get('token');
 
-    const onSubmit = useCallback(() => {
-        if (success || error) return;
-
-        console.log('token', token);
-
+    const onSubmit = useCallback(async () => {
         if (!token) {
             setError('Missing token!');
             return;
         }
-
-        newVerification(token)
-            .then((data) => {
-                setSuccess(data.success);
-                setError(data.error);
-            })
-            .catch(() => {
-                setError('Something went wrong!');
-            });
-    }, [token, success, error]);
+        try {
+            const data = await newVerification(token);
+            setSuccess(data.success);
+            setError(data.error);
+        } catch (error) {
+            setError('Something went wrong!');
+        }
+    }, [token]);
 
     useEffect(() => {
         onSubmit();
