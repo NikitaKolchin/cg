@@ -1,33 +1,11 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 type CTABannerProps = {
     title: string;
 };
-
-async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    try {
-        const response = await fetch('/api/contact', {
-            method: 'post',
-            body: formData,
-        });
-
-        if (!response.ok) {
-            console.log('falling over');
-            throw new Error(`response status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        console.log(responseData['message']);
-
-        alert('Message successfully sent');
-    } catch (err) {
-        console.error(err);
-        alert('Error, please try resubmitting the form');
-    }
-}
 
 const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
     title,
@@ -37,6 +15,7 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
         threshold: 0.3,
         triggerOnce: true,
     });
+    const router = useRouter();
     return (
         <div
             ref={inViewRef}
@@ -48,7 +27,20 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
                 </div>
             </div>
             <form
-                onSubmit={handleSubmit}
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    const url = '/auth/login';
+
+                    const email =
+                        new FormData(event.currentTarget)
+                            .get('email')
+                            ?.toString() || '';
+                    const queryParamString = new URLSearchParams({
+                        email,
+                    }).toString();
+                    console.log(`${url}?${queryParamString}`);
+                    router.push(`${url}?${queryParamString}`);
+                }}
                 className={`mx-auto relative max-sm:w-full sm:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
             >
                 <input

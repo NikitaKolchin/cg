@@ -1,11 +1,42 @@
 // * Comnfiguration for authentication
 import NextAuth from 'next-auth';
-import authConfig from '@/auth.config';
 import { db } from '@/lib/database.connection';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { getUserById } from '@/lib/actions/user.action';
 import { UserRole } from '@prisma/client';
 import { getAccountByUserId } from '@/lib/account';
+import Nodemailer from 'next-auth/providers/nodemailer';
+import Google from 'next-auth/providers/google';
+import Github from 'next-auth/providers/github';
+import { Provider } from '@auth/core/providers';
+
+const serviceName = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
+const myEmail = process.env.NEXT_PUBLIC_EMAIL_USER;
+const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
+
+const providers: Provider[] = [
+    Nodemailer({
+        server: {
+            service: serviceName,
+            secure: true,
+            port: 465,
+            auth: {
+                user: myEmail, // 'uproffi@gmail.com',
+                pass: password, //'ybjd alqv rezo bjow',
+            },
+            from: process.env.NEXT_PUBLIC_EMAIL_USER,
+        },
+    }),
+    Github({
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    }),
+    Google({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
+        allowDangerousEmailAccountLinking: true,
+    }),
+];
 
 export const {
     handlers: { GET, POST },
@@ -14,12 +45,11 @@ export const {
     signOut,
     unstable_update: update,
 } = NextAuth({
-    // * This is for solving errors when using linkAccount feature
-    pages: {
-        signIn: '/auth/login',
-        error: '/auth/error',
-    },
-
+    // pages: {
+    //     signIn: '/auth/login',
+    //     error: '/auth/error',
+    // },
+    providers,
     // * This is for linkAccount feature
     events: {
         async linkAccount({ user }) {
@@ -31,19 +61,6 @@ export const {
     },
 
     callbacks: {
-        // * (70)
-        async signIn({ user, account }) {
-            // Allow OAuth without email verification
-            if (account?.provider !== 'credentials') return true;
-
-            const existingUser = await getUserById(user.id!);
-
-            // Prevent sign in without email verification
-            if (!existingUser?.emailVerified) return false;
-
-            return true;
-        },
-
         async session({ token, session }) {
             if (token.sub && session.user) {
                 session.user.id = token.sub;
@@ -66,20 +83,30 @@ export const {
             // fecthing the user
 
             if (!token.sub) return token;
-            const exisitingUser = await getUserById(token.sub);
-            if (!exisitingUser) return token;
+            const existingUser = await getUserById(token.sub);
+            if (!existingUser) return token;
 
-            const existingAccount = await getAccountByUserId(exisitingUser.id);
+            const existingAccount = await getAccountByUserId(existingUser.id);
 
             token.isOAuth = !!existingAccount;
-            token.role = exisitingUser.role;
-            token.name = exisitingUser.name;
-            token.email = exisitingUser.email;
+            token.role = existingUser.role;
+            token.name = existingUser.name;
+            token.email = existingUser.email;
 
             return token;
         },
     },
     adapter: PrismaAdapter(db), // prisma adapter is supported on non edge
     session: { strategy: 'jwt' },
-    ...authConfig,
 });
+
+export const providerMap = providers
+    .map((provider) => {
+        if (typeof provider === 'function') {
+            const providerData = provider();
+            return { id: providerData.id, name: providerData.name };
+        } else {
+            return { id: provider.id, name: provider.name };
+        }
+    })
+    .filter((provider) => provider.id !== 'nodemailer');
