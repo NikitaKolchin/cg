@@ -1,7 +1,7 @@
 export const menuData = [
-    { title: 'Формат работы', link: '#format' },
-    { title: 'Мой опыт', link: '#experience' },
-    { title: 'Стоимость услуг', link: '#cost' },
+    { title: 'Формат работы', link: '/#format' },
+    { title: 'Мой опыт', link: '/#experience' },
+    { title: 'Стоимость услуг', link: '/#cost' },
 ];
 export const heroData = {
     title: 'Моя главная задача – раскрыть потенциал и разобраться в чувствах',
