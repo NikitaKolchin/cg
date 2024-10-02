@@ -1,4 +1,3 @@
-// * Comnfiguration for authentication
 import NextAuth from 'next-auth';
 import { db } from '@/lib/database.connection';
 import { PrismaAdapter } from '@auth/prisma-adapter';
