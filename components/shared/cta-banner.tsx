@@ -37,8 +37,8 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
                             ?.toString() || '';
                     const queryParamString = new URLSearchParams({
                         email,
+                        callbackUrl: '/settings',
                     }).toString();
-                    console.log(`${url}?${queryParamString}`);
                     router.push(`${url}?${queryParamString}`);
                 }}
                 className={`mx-auto relative max-sm:w-full sm:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}

@@ -12,3 +12,7 @@ export const AppConfig = {
         'Яна Агевнина, психолог, профориентолог, карьерный консультант​, игропрактик',
     locale: 'ru',
 };
+
+export const SIGNIN_ERROR_URL = '/auth/error';
+export const SIGNIN_REDIRECT_URL = '/settings';
+export const WORKING_REDIRECT_URL = '/server';

@@ -1,14 +1,21 @@
 import { redirect } from 'next/navigation';
-import { signIn, providerMap } from '@/auth';
+import { signIn, providerMap, auth } from '@/auth';
 import { AuthError } from 'next-auth';
+import {
+    SIGNIN_ERROR_URL,
+    SIGNIN_REDIRECT_URL,
+    WORKING_REDIRECT_URL,
+} from '@/lib/utils';
 
-const SIGNIN_ERROR_URL = '/auth/error';
 export default async function SignInPage(props: {
     searchParams: {
         email: string | undefined;
         callbackUrl: string | undefined;
     };
 }) {
+    const session = await auth();
+    if (session?.user.name) return redirect(WORKING_REDIRECT_URL);
+    if (session) return redirect(SIGNIN_REDIRECT_URL);
     return (
         <div className="flex flex-col gap-2">
             <form
