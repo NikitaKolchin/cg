@@ -44,10 +44,10 @@ export const {
     signOut,
     unstable_update: update,
 } = NextAuth({
-    // pages: {
-    //     signIn: '/auth/login',
-    //     error: '/auth/error',
-    // },
+    pages: {
+        signIn: '/auth/login',
+        error: '/auth/error',
+    },
     providers,
     // * This is for linkAccount feature
     events: {

@@ -28,7 +28,7 @@ export default async function RootLayout({
     return (
         <SessionProvider session={session}>
             <html lang={AppConfig.locale} className={montserrat.className}>
-                <body>
+                <body className="flex flex-col h-screen justify-between">
                     <Header />
                     {children}
                     <Footer />
