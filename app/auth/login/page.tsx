@@ -20,7 +20,7 @@ export default async function SignInPage(props: {
     if (session?.user.name) return redirect(WORKING_REDIRECT_URL);
     if (session) return redirect(SIGNIN_REDIRECT_URL);
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 bg-light h-full justify-center m-auto">
             <div className="p-4 border-2">
                 <form
                     action={async (formData) => {
