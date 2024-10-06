@@ -7,6 +7,7 @@ import { getAccountByUserId } from '@/lib/account';
 import Nodemailer from 'next-auth/providers/nodemailer';
 import Google from 'next-auth/providers/google';
 import Github from 'next-auth/providers/github';
+import Yandex from 'next-auth/providers/yandex';
 import { Provider } from '@auth/core/providers';
 
 const serviceName = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
@@ -34,6 +35,10 @@ const providers: Provider[] = [
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_SECRET,
         allowDangerousEmailAccountLinking: true,
+    }),
+    Yandex({
+        clientId: process.env.AUTH_YANDEX_ID,
+        clientSecret: process.env.AUTH_YANDEX_SECRET,
     }),
 ];
 

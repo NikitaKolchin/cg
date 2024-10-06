@@ -8,6 +8,8 @@ import {
 } from '@/lib/utils';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
+import { FaYandex } from 'react-icons/fa';
+
 import { Button } from '@/components/ui/button';
 
 export default async function SignInPage(props: {
@@ -109,6 +111,8 @@ export default async function SignInPage(props: {
                                         <FcGoogle />
                                     ) : provider.name === 'GitHub' ? (
                                         <FaGithub />
+                                    ) : provider.name === 'Yandex' ? (
+                                        <FaYandex />
                                     ) : (
                                         <span>Войти через {provider.name}</span>
                                     )}
