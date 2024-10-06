@@ -107,12 +107,12 @@ export default async function SignInPage(props: {
                                     variant="outline"
                                     type="submit"
                                 >
-                                    {provider.name === 'Google' ? (
+                                    {provider.name === 'Yandex' ? (
+                                        <FaYandex />
+                                    ) : provider.name === 'Google' ? (
                                         <FcGoogle />
                                     ) : provider.name === 'GitHub' ? (
                                         <FaGithub />
-                                    ) : provider.name === 'Yandex' ? (
-                                        <FaYandex />
                                     ) : (
                                         <span>Войти через {provider.name}</span>
                                     )}

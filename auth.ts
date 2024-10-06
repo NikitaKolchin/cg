@@ -27,18 +27,18 @@ const providers: Provider[] = [
             from: process.env.NEXT_PUBLIC_EMAIL_USER,
         },
     }),
-    Github({
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    Yandex({
+        clientId: process.env.AUTH_YANDEX_ID,
+        clientSecret: process.env.AUTH_YANDEX_SECRET,
     }),
     Google({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_SECRET,
         allowDangerousEmailAccountLinking: true,
     }),
-    Yandex({
-        clientId: process.env.AUTH_YANDEX_ID,
-        clientSecret: process.env.AUTH_YANDEX_SECRET,
+    Github({
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
 ];
 
