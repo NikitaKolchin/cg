@@ -2,6 +2,12 @@
 import { useRouter } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 import { useInView } from 'react-intersection-observer';
+import {
+    SIGNIN_REDIRECT_URL,
+    SIGNIN_URL,
+    WORKING_REDIRECT_URL,
+} from '@/lib/utils';
+import { useSession } from 'next-auth/react';
 
 type CTABannerProps = {
     title: string;
@@ -16,6 +22,7 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
         triggerOnce: true,
     });
     const router = useRouter();
+    const session = useSession();
     return (
         <div
             ref={inViewRef}
@@ -26,27 +33,37 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
                     {title}
                 </div>
             </div>
-            <form
-                onSubmit={(event) => {
-                    event.preventDefault();
-                    const url = '/auth/login';
+            {session.data?.user ? (
+                <form
+                    className="sm:w-1/2 mim-sm:w-full  h-16 rounded-full"
+                    onSubmit={(event) => {
+                        event.preventDefault();
+                        router.push(WORKING_REDIRECT_URL);
+                    }}
+                >
+                    <span className="text-2xl">{children}</span>
+                </form>
+            ) : (
+                <form
+                    onSubmit={(event) => {
+                        event.preventDefault();
 
-                    const email =
-                        new FormData(event.currentTarget)
-                            .get('email')
-                            ?.toString() || '';
-                    const queryParamString = new URLSearchParams({
-                        email,
-                        callbackUrl: '/settings',
-                    }).toString();
-                    router.push(`${url}?${queryParamString}`);
-                }}
-                className={`mx-auto relative max-sm:w-full sm:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
-            >
-                <input
-                    type="email"
-                    name="email"
-                    className="peer h-full w-full
+                        const email =
+                            new FormData(event.currentTarget)
+                                .get('email')
+                                ?.toString() || '';
+                        const queryParamString = new URLSearchParams({
+                            email,
+                            callbackUrl: SIGNIN_REDIRECT_URL,
+                        }).toString();
+                        router.push(`${SIGNIN_URL}?${queryParamString}`);
+                    }}
+                    className={`mx-auto relative max-sm:w-full sm:w-1/2 h-12 rounded-full border border-gray-500  mt-3 sm:mt-0 ${inView ? 'max-sm:animate-bounce' : ''} transition-transform duration-500`}
+                >
+                    <input
+                        type="email"
+                        name="email"
+                        className="peer h-full w-full
                                     rounded-full 
                                     border border-blue-gray-200 
                                     px-3 py-2.5 pr-20 
@@ -55,13 +72,14 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
                                     outline outline-0 transition-all
                                     placeholder-shown:border placeholder-shown:border-blue-gray-200
                                     placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder="Ваш E-mail"
-                    required
-                />
-                <div className="absolute w-1/3 left-2/3 inset-0  rounded-full border">
-                    {children}
-                </div>
-            </form>
+                        placeholder="Ваш E-mail"
+                        required
+                    />
+                    <div className="absolute w-1/3 left-2/3 inset-0  rounded-full border">
+                        {children}
+                    </div>
+                </form>
+            )}
         </div>
     );
 };

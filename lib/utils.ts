@@ -13,6 +13,7 @@ export const AppConfig = {
     locale: 'ru',
 };
 
+export const SIGNIN_URL = '/auth/login';
 export const SIGNIN_ERROR_URL = '/auth/error';
 export const SIGNIN_REDIRECT_URL = '/settings';
 export const WORKING_REDIRECT_URL = '/server';
