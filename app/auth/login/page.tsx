@@ -9,6 +9,7 @@ import {
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { FaYandex } from 'react-icons/fa';
+import { FaVk } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
 
@@ -109,6 +110,8 @@ export default async function SignInPage(props: {
                                 >
                                     {provider.name === 'Yandex' ? (
                                         <FaYandex />
+                                    ) : provider.name === 'VK' ? (
+                                        <FaVk />
                                     ) : provider.name === 'Google' ? (
                                         <FcGoogle />
                                     ) : provider.name === 'GitHub' ? (

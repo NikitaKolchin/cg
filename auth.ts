@@ -8,6 +8,7 @@ import Nodemailer from 'next-auth/providers/nodemailer';
 import Google from 'next-auth/providers/google';
 import Github from 'next-auth/providers/github';
 import Yandex from 'next-auth/providers/yandex';
+import Vk from 'next-auth/providers/vk';
 import { Provider } from '@auth/core/providers';
 
 const serviceName = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
@@ -30,6 +31,11 @@ const providers: Provider[] = [
     Yandex({
         clientId: process.env.AUTH_YANDEX_ID,
         clientSecret: process.env.AUTH_YANDEX_SECRET,
+    }),
+    Vk({
+        clientId: process.env.AUTH_VK_ID,
+        clientSecret: process.env.AUTH_VK_SECRET,
+        checks: ['none'],
     }),
     Google({
         clientId: process.env.GOOGLE_CLIENT_ID,
