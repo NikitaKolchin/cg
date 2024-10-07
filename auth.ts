@@ -37,6 +37,9 @@ const providers: Provider[] = [
         clientSecret: process.env.AUTH_VK_SECRET,
         token: `https://oauth.vk.com/access_token?v=${apiVersion}`,
         authorization: `https://oauth.vk.com/authorize?response_type=code&v=${apiVersion}`,
+        userinfo: {
+            url: `https://api.vk.com/method/users.get?fields=photo_100&v=${apiVersion}`,
+        },
         checks: ['none'],
     }),
     Google({
