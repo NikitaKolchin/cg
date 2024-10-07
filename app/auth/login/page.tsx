@@ -108,7 +108,7 @@ export default async function SignInPage(props: {
                                     type="submit"
                                 >
                                     {provider.name === 'Yandex' ? (
-                                        <FaYandex size={36} />
+                                        <FaYandex color="red" size={36} />
                                     ) : provider.name === 'Google' ? (
                                         <FcGoogle size={36} />
                                     ) : provider.name === 'GitHub' ? (
