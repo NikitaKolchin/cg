@@ -8,13 +8,11 @@ import Nodemailer from 'next-auth/providers/nodemailer';
 import Google from 'next-auth/providers/google';
 import Github from 'next-auth/providers/github';
 import Yandex from 'next-auth/providers/yandex';
-import Vk from 'next-auth/providers/vk';
 import { Provider } from '@auth/core/providers';
 
 const serviceName = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
 const myEmail = process.env.NEXT_PUBLIC_EMAIL_USER;
 const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
-const apiVersion = '5.207';
 const providers: Provider[] = [
     Nodemailer({
         server: {
@@ -31,15 +29,6 @@ const providers: Provider[] = [
     Yandex({
         clientId: process.env.AUTH_YANDEX_ID,
         clientSecret: process.env.AUTH_YANDEX_SECRET,
-    }),
-    Vk({
-        clientId: process.env.AUTH_VK_ID,
-        clientSecret: process.env.AUTH_VK_SECRET,
-        token: `https://oauth.vk.com/access_token?v=${apiVersion}`,
-        authorization: `https://oauth.vk.com/authorize?response_type=code&v=${apiVersion}`,
-        userinfo: {
-            url: `https://api.vk.com/method/users.get?fields=photo_100&v=${apiVersion}`,
-        },
     }),
     Google({
         clientId: process.env.GOOGLE_CLIENT_ID,

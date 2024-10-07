@@ -9,7 +9,6 @@ import {
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { FaYandex } from 'react-icons/fa';
-import { FaVk } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
 
@@ -80,7 +79,7 @@ export default async function SignInPage(props: {
                     <h2 className="text-xl">
                         Или войдите с помощью других сервисов
                     </h2>
-                    <div className="flex">
+                    <div className="flex justify-center">
                         {Object.values(providerMap).map((provider) => (
                             <form
                                 key={provider.id}
@@ -109,13 +108,11 @@ export default async function SignInPage(props: {
                                     type="submit"
                                 >
                                     {provider.name === 'Yandex' ? (
-                                        <FaYandex />
-                                    ) : provider.name === 'VK' ? (
-                                        <FaVk />
+                                        <FaYandex size={36} />
                                     ) : provider.name === 'Google' ? (
-                                        <FcGoogle />
+                                        <FcGoogle size={36} />
                                     ) : provider.name === 'GitHub' ? (
-                                        <FaGithub />
+                                        <FaGithub size={36} />
                                     ) : (
                                         <span>Войти через {provider.name}</span>
                                     )}
