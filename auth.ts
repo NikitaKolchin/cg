@@ -40,7 +40,6 @@ const providers: Provider[] = [
         userinfo: {
             url: `https://api.vk.com/method/users.get?fields=photo_100&v=${apiVersion}`,
         },
-        checks: ['none'],
     }),
     Google({
         clientId: process.env.GOOGLE_CLIENT_ID,
