@@ -6,6 +6,7 @@ import yana from '../../public/images/yana_m.png';
 import { heroData } from '@/data';
 import { Fragment } from 'react';
 import { AppConfig } from '@/lib/utils';
+import Link from 'next/link';
 
 const Hero = async () => {
     return (
@@ -38,7 +39,9 @@ const Hero = async () => {
                     </div>
 
                     <div className="flex w-4/6 justify-start items-center gap-6 max-xl:hidden">
-                        <Button size={'lg'}>{heroData.button}</Button>
+                        <Link href={'profile'}>
+                            <Button size={'lg'}>{heroData.button}</Button>
+                        </Link>
                         <IconList color="white" size={48} />
                     </div>
                 </header>
