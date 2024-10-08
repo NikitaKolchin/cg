@@ -5,8 +5,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransition, useState } from 'react';
 import { useSession } from 'next-auth/react';
-
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 import {
@@ -61,41 +59,39 @@ const SettingsPage = () => {
     };
 
     return (
-        <Card className="w-[600px]">
-            <CardHeader>
-                <p className="text-2xl font-semibold text-center">
-                    ⚙️ Settings
-                </p>
-                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
-                    <g color="green">
-                        <circle
-                            r="5"
-                            cx="5"
-                            cy="5"
-                            stroke="currentcolor"
-                            fill="none"
-                            strokeWidth="5"
-                        />
-                    </g>
-                </svg>
-            </CardHeader>
-            <CardContent>
-                <Form {...form}>
-                    <form
-                        className="space-y-6"
-                        onSubmit={form.handleSubmit(onSubmit)}
-                    >
-                        <div className="space-y-4">
+        <Form {...form}>
+            <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+                <div className="space-y-4">
+                    <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        {...field}
+                                        placeholder="John Doe"
+                                        disabled={isPending}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    {user?.isOAuth === false && (
+                        <>
                             <FormField
                                 control={form.control}
-                                name="name"
+                                name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>Email</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
-                                                placeholder="John Doe"
+                                                placeholder="john.doe@example.com"
+                                                type="email"
                                                 disabled={isPending}
                                             />
                                         </FormControl>
@@ -103,60 +99,36 @@ const SettingsPage = () => {
                                     </FormItem>
                                 )}
                             />
-                            {user?.isOAuth === false && (
-                                <>
-                                    <FormField
-                                        control={form.control}
-                                        name="email"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Email</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        {...field}
-                                                        placeholder="john.doe@example.com"
-                                                        type="email"
-                                                        disabled={isPending}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </>
-                            )}
-                            <FormField
-                                control={form.control}
-                                name="role"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Role</FormLabel>
-                                        <select
-                                            disabled={isPending}
-                                            onChange={field.onChange}
-                                            defaultValue={field.value}
-                                        >
-                                            <option value={UserRole.ADMIN}>
-                                                Admin
-                                            </option>
-                                            <option value={UserRole.USER}>
-                                                User
-                                            </option>
-                                        </select>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                        </div>
-                        <FormError message={error} />
-                        <FormSuccess message={success} />
-                        <Button disabled={isPending} type="submit">
-                            Save
-                        </Button>
-                    </form>
-                </Form>
-            </CardContent>
-        </Card>
+                        </>
+                    )}
+                    <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Role</FormLabel>
+                                <select
+                                    disabled={isPending}
+                                    onChange={field.onChange}
+                                    defaultValue={field.value}
+                                >
+                                    <option value={UserRole.ADMIN}>
+                                        Admin
+                                    </option>
+                                    <option value={UserRole.USER}>User</option>
+                                </select>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                <FormError message={error} />
+                <FormSuccess message={success} />
+                <Button disabled={isPending} type="submit">
+                    Save
+                </Button>
+            </form>
+        </Form>
     );
 };
 

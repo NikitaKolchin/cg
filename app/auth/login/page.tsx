@@ -1,11 +1,7 @@
 import { redirect } from 'next/navigation';
 import { signIn, providerMap, auth } from '@/auth';
 import { AuthError } from 'next-auth';
-import {
-    SIGNIN_ERROR_URL,
-    SIGNIN_REDIRECT_URL,
-    WORKING_REDIRECT_URL,
-} from '@/lib/utils';
+import { SIGNIN_ERROR_URL, SIGNIN_REDIRECT_URL } from '@/lib/utils';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { FaYandex } from 'react-icons/fa';
@@ -22,7 +18,6 @@ export default async function SignInPage({
     };
 }) {
     const session = await auth();
-    if (session?.user.name) return redirect(WORKING_REDIRECT_URL);
     if (session) return redirect(SIGNIN_REDIRECT_URL);
     return (
         <div className="bg-dark w-full h-full flex flex-col justify-center">
