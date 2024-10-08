@@ -6,6 +6,7 @@ import { Button } from '../ui/button';
 import { Accordion } from '@szhsin/react-accordion';
 import { formatData } from '@/data';
 import { FormatItem } from '../shared/format-item';
+import Link from 'next/link';
 
 const Format = () => (
     <Section
@@ -13,7 +14,9 @@ const Format = () => (
         beforeElement={
             <div className="xl:hidden h-36 flex flex-col justify-between mb-12">
                 <div className="flex justify-center">
-                    <Button size={'lg'}>Связаться со мной</Button>
+                    <Link href="profile">
+                        <Button size={'lg'}>Связаться со мной</Button>
+                    </Link>
                 </div>
                 <IconList color="black" size={48} />
             </div>
