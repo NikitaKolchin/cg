@@ -15,7 +15,6 @@ import {
     FormControl,
     FormItem,
     FormLabel,
-    FormDescription,
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -38,12 +37,9 @@ const SettingsPage = () => {
     const form = useForm<z.infer<typeof SettingsSchema>>({
         resolver: zodResolver(SettingsSchema),
         defaultValues: {
-            password: undefined,
-            newPassword: undefined,
             name: user?.name || undefined,
             email: user?.email || undefined,
             role: user?.role || undefined,
-            isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
         },
     });
 
@@ -127,44 +123,6 @@ const SettingsPage = () => {
                                             </FormItem>
                                         )}
                                     />
-                                    <FormField
-                                        control={form.control}
-                                        name="password"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Password</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        {...field}
-                                                        placeholder="******"
-                                                        type="password"
-                                                        disabled={isPending}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="newPassword"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    New Password
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        {...field}
-                                                        placeholder="******"
-                                                        type="password"
-                                                        disabled={isPending}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
                                 </>
                             )}
                             <FormField
@@ -189,26 +147,6 @@ const SettingsPage = () => {
                                     </FormItem>
                                 )}
                             />
-                            {user?.isOAuth === false && (
-                                <FormField
-                                    control={form.control}
-                                    name="isTwoFactorEnabled"
-                                    render={() => (
-                                        <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                                            <div className="space-y-0.5">
-                                                <FormLabel>
-                                                    Two Factor Authentication
-                                                </FormLabel>
-                                                <FormDescription>
-                                                    Enable two factor
-                                                    authentication for your
-                                                    account
-                                                </FormDescription>
-                                            </div>
-                                        </FormItem>
-                                    )}
-                                />
-                            )}
                         </div>
                         <FormError message={error} />
                         <FormSuccess message={success} />

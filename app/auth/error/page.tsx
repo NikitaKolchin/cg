@@ -1,7 +1,11 @@
 import { ErrorCard } from '@/components/auth/error-card';
 
-const AuthErrorPage = () => {
-    return <ErrorCard />;
+const AuthErrorPage = ({
+    searchParams,
+}: {
+    searchParams: { error: string };
+}) => {
+    return <ErrorCard error={searchParams.error} />;
 };
 
 export default AuthErrorPage;

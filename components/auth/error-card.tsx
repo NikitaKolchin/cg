@@ -1,6 +1,11 @@
 import { CardWrapper } from '@/components/auth/card-wrapper';
+import { FC } from 'react';
 
-export const ErrorCard = () => {
+type Props = {
+    error: string;
+};
+
+export const ErrorCard: FC<Props> = ({ error }) => {
     return (
         <CardWrapper
             headerLabel="Oops! Something went wrong!"
@@ -8,7 +13,7 @@ export const ErrorCard = () => {
             backButtonLabel="Back to login"
         >
             <div className="w-full flex justify-center items-center">
-                error{' '}
+                {error}
             </div>
         </CardWrapper>
     );

@@ -11,8 +11,11 @@ import { FaGithub } from 'react-icons/fa';
 import { FaYandex } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
+import { LoginSchema } from '@/schema';
 
-export default async function SignInPage(props: {
+export default async function SignInPage({
+    searchParams,
+}: {
     searchParams: {
         email: string | undefined;
         callbackUrl: string | undefined;
@@ -29,7 +32,16 @@ export default async function SignInPage(props: {
                         action={async (formData) => {
                             'use server';
                             try {
-                                await signIn('nodemailer', formData);
+                                const emailValidation = LoginSchema.safeParse(
+                                    Object.fromEntries(formData.entries()),
+                                );
+                                if (emailValidation.success) {
+                                    await signIn('nodemailer', formData);
+                                } else {
+                                    return redirect(
+                                        `${SIGNIN_ERROR_URL}?error=${emailValidation.error.errors[0].message}`,
+                                    );
+                                }
                             } catch (error) {
                                 if (error instanceof AuthError) {
                                     return redirect(
@@ -59,8 +71,10 @@ export default async function SignInPage(props: {
                                     placeholder-shown:border-t-blue-gray-200 disabled:border-0 disabled:bg-blue-gray-50"
                             name="email"
                             id="email"
+                            type="email"
                             placeholder="Ваш E-mail"
-                            defaultValue={props.searchParams.email}
+                            required
+                            defaultValue={searchParams.email}
                         />
                         <span className="sm:w-3/4 max-sm:w-full text-center">
                             {' '}
@@ -88,8 +102,8 @@ export default async function SignInPage(props: {
                                     try {
                                         await signIn(provider.id, {
                                             redirectTo:
-                                                props.searchParams
-                                                    ?.callbackUrl ?? '/',
+                                                searchParams?.callbackUrl ??
+                                                '/',
                                         });
                                     } catch (error) {
                                         if (error instanceof AuthError) {

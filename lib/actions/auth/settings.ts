@@ -22,9 +22,6 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
     // if the user is signed in from google or another account
     if (user.isOAuth) {
         values.email = undefined;
-        values.password = undefined;
-        values.newPassword = undefined;
-        values.isTwoFactorEnabled = undefined;
     }
 
     //   updating the user
