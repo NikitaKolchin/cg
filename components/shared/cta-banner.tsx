@@ -2,11 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 import { useInView } from 'react-intersection-observer';
-import {
-    SIGNIN_REDIRECT_URL,
-    SIGNIN_URL,
-    WORKING_REDIRECT_URL,
-} from '@/lib/utils';
+import { SIGNIN_REDIRECT_URL, SIGNIN_URL } from '@/lib/utils';
 import { useSession } from 'next-auth/react';
 
 type CTABannerProps = {
@@ -38,7 +34,7 @@ const CTABanner: FC<PropsWithChildren<CTABannerProps>> = ({
                     className="sm:w-1/2 mim-sm:w-full  h-16 rounded-full"
                     onSubmit={(event) => {
                         event.preventDefault();
-                        router.push(WORKING_REDIRECT_URL);
+                        router.push(SIGNIN_REDIRECT_URL);
                     }}
                 >
                     <span className="text-2xl">{children}</span>
