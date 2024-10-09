@@ -46,26 +46,30 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
     };
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex flex-col gap-6">
-                    <div>
-                        <div>
-                            <label htmlFor="">Имя</label>
-
-                            {errors?.name && <span>{errors.name.message}</span>}
+            <form onSubmit={handleSubmit(onSubmit)} className="m-auto">
+                <div className="flex flex-col gap-2">
+                    <div className="border-2 p-2 m-auto text-center">
+                        <div className="h-12 w-72">
+                            <label htmlFor="" className="text-center font-bold">
+                                Имя
+                            </label>
+                            {errors?.name && (
+                                <div className="text-sm text-red-600">
+                                    {errors.name.message}
+                                </div>
+                            )}
                         </div>
                         <input
+                            placeholder="Ваше имя"
                             {...register('name')}
                             type="text"
                             defaultValue={user?.name}
                         />
                     </div>
                     <div>
-                        <div>
+                        <div className="h-12">
                             <label htmlFor="">Почта</label>
-                            {errors?.email && (
-                                <span>{errors.email.message}</span>
-                            )}
+                            {errors?.email && <div>{errors.email.message}</div>}
                         </div>
                         <input
                             {...register('email')}
@@ -74,11 +78,9 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
                         />
                     </div>
                     <div>
-                        <div>
+                        <div className="h-12">
                             <label htmlFor="">ваш запрос</label>
-                            {errors?.query && (
-                                <span>{errors.query.message}</span>
-                            )}
+                            {errors?.query && <div>{errors.query.message}</div>}
                         </div>
                         <input
                             {...register('query')}
@@ -88,16 +90,17 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
                     </div>
 
                     <div>
-                        <div>
+                        <div className="h-12">
                             <label htmlFor="">контактный телефон</label>
-                            {errors?.tel && <span>{errors.tel.message}</span>}
+                            {errors?.tel && <div>{errors.tel.message}</div>}
                         </div>
+
                         <input {...register('tel')} type="tel" />
                     </div>
                     <div>
-                        <div>
+                        <div className="h-12">
                             <label htmlFor="">желаемая дата</label>
-                            {errors?.date && <span>{errors.date.message}</span>}
+                            {errors?.date && <div>{errors.date.message}</div>}
                         </div>
                         <input {...register('date')} type="datetime-local" />
                     </div>
