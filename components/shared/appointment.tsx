@@ -59,6 +59,7 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
 
                 <div>
                     <label htmlFor="">Почта</label>
+                    {errors?.email && <span>{errors.email.message}</span>}
                 </div>
                 <input
                     {...register('email')}
