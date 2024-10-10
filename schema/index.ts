@@ -10,7 +10,6 @@ export const LoginSchema = z.object({
 const telValidation = new RegExp(/^\+[1-9]{1}[0-9]{3,14}$/);
 
 export const AppointmentSchema = z.object({
-    email: z.string().email({ message: 'Неверный формат почты' }),
     name: z.string().min(1, { message: 'Поле не может быть пустым' }),
     tel: z
         .string()

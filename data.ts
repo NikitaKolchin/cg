@@ -125,3 +125,38 @@ export const costData = [
         strip: '',
     },
 ];
+
+export const appointmentData = [
+    {
+        label: 'Имя',
+        name: 'name',
+        type: 'text',
+        placeholder: 'Ваше имя',
+        disabled: false,
+    },
+    {
+        label: 'Почта',
+        name: 'email',
+        type: 'email',
+        placeholder: '',
+        disabled: true,
+    },
+    {
+        label: 'ваш запрос',
+        name: 'query',
+        type: 'text',
+        placeholder: '',
+    },
+    {
+        label: 'контактный телефон',
+        name: 'tel',
+        type: 'tel',
+        placeholder: '',
+    },
+    {
+        label: 'желаемая дата',
+        name: 'date',
+        type: 'datetime-local',
+        placeholder: '',
+    },
+];

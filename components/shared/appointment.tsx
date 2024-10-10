@@ -9,6 +9,7 @@ import { z } from 'zod';
 import { FormError } from '../form-error';
 import { FormSuccess } from '../form-sucess';
 import { Button } from '../ui/button';
+import { appointmentData } from '@/data';
 
 type AppointmentProps = {
     user: {
@@ -29,81 +30,69 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
     const [success, setSuccess] = useState<string | undefined>();
     const { update } = useSession();
     const onSubmit = (values: z.infer<typeof AppointmentSchema>) => {
-        startTransition(() => {
-            profile(values)
-                .then((data) => {
-                    if (data.error) {
-                        setError(data.error);
-                    }
-
-                    if (data.success) {
-                        update();
-                        setSuccess(data.success);
-                    }
-                })
-                .catch(() => setError('Something went wrong!'));
+        startTransition(async () => {
+            try {
+                const data = await profile(values);
+                if (data?.error) {
+                    setError(data.error);
+                }
+                if (data?.success) {
+                    update();
+                    setSuccess(data.success);
+                }
+            } catch (error) {
+                setError('Something went wrong!');
+            }
         });
     };
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="m-auto">
                 <div className="flex flex-col gap-2">
-                    <div className="border-2 p-2 m-auto text-center">
-                        <div className="h-12 w-72">
-                            <label htmlFor="" className="text-center font-bold">
-                                Имя
-                            </label>
-                            {errors?.name && (
-                                <div className="text-sm text-red-600">
-                                    {errors.name.message}
-                                </div>
-                            )}
+                    {appointmentData.map((item, index) => (
+                        <div
+                            key={index}
+                            className="border-2 p-2 m-auto text-center"
+                        >
+                            <div className="h-12 w-72">
+                                <label
+                                    htmlFor=""
+                                    className="text-center font-bold"
+                                >
+                                    {item.label}
+                                </label>
+                                {!item.disabled &&
+                                    errors?.[
+                                        item.name as keyof z.infer<
+                                            typeof AppointmentSchema
+                                        >
+                                    ] && (
+                                        <div className="text-sm text-red-600">
+                                            {
+                                                errors?.[
+                                                    item.name as keyof z.infer<
+                                                        typeof AppointmentSchema
+                                                    >
+                                                ]?.message
+                                            }
+                                        </div>
+                                    )}
+                            </div>
+                            <input
+                                placeholder={item.placeholder}
+                                {...register(
+                                    item.name as keyof z.infer<
+                                        typeof AppointmentSchema
+                                    >,
+                                )}
+                                type={item.type}
+                                disabled={item.disabled}
+                                defaultValue={
+                                    user?.[item.name as 'name' | 'email']
+                                }
+                            />
                         </div>
-                        <input
-                            placeholder="Ваше имя"
-                            {...register('name')}
-                            type="text"
-                            defaultValue={user?.name}
-                        />
-                    </div>
-                    <div>
-                        <div className="h-12">
-                            <label htmlFor="">Почта</label>
-                            {errors?.email && <div>{errors.email.message}</div>}
-                        </div>
-                        <input
-                            {...register('email')}
-                            type="email"
-                            defaultValue={user?.email}
-                        />
-                    </div>
-                    <div>
-                        <div className="h-12">
-                            <label htmlFor="">ваш запрос</label>
-                            {errors?.query && <div>{errors.query.message}</div>}
-                        </div>
-                        <input
-                            {...register('query')}
-                            name="query"
-                            type="text"
-                        />
-                    </div>
-
-                    <div>
-                        <div className="h-12">
-                            <label htmlFor="">контактный телефон</label>
-                            {errors?.tel && <div>{errors.tel.message}</div>}
-                        </div>
-
-                        <input {...register('tel')} type="tel" />
-                    </div>
-                    <div>
-                        <div className="h-12">
-                            <label htmlFor="">желаемая дата</label>
-                            {errors?.date && <div>{errors.date.message}</div>}
-                        </div>
-                        <input {...register('date')} type="datetime-local" />
-                    </div>
+                    ))}
 
                     <Button type="submit" className="button">
                         Отправить

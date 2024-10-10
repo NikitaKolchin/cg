@@ -27,6 +27,17 @@ model User {
   password      String?
   accounts      Account[]
   role          UserRole @default(USER)
+  appointments  Appointment[]
+}
+
+model Appointment {
+  id            String    @id @default(cuid())
+  userId        String
+  query         String?
+  date          DateTime?
+  tel           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 
