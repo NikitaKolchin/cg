@@ -51,6 +51,7 @@ export const {
     pages: {
         signIn: '/auth/login',
         error: '/auth/error',
+        verifyRequest: '/auth/verify-request',
     },
     providers,
     // * This is for linkAccount feature

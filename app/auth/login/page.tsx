@@ -21,7 +21,7 @@ export default async function SignInPage({
     if (session) return redirect(SIGNIN_REDIRECT_URL);
     return (
         <div className="bg-dark w-full h-full flex flex-col justify-center">
-            <div className="flex flex-col justify-center items-center bg-light w-fit m-auto border-2 rounded-2xl  shadow-gray-500 shadow-lg">
+            <div className="flex flex-col justify-center items-center bg-light w-fit m-auto border-2 rounded-2xl  sm:shadow-gray-500 sm:shadow-lg">
                 <div className="flex flex-col gap-4 p-4">
                     <form
                         action={async (formData) => {

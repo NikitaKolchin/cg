@@ -16,7 +16,7 @@ const Header = async () => {
                     {isAuth ? (
                         <SignOut />
                     ) : (
-                        <Link href="auth/login">Войти</Link>
+                        <Link href="/auth/login">Войти</Link>
                     )}
                 </li>
             </Navbar>

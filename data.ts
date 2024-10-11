@@ -134,13 +134,13 @@ export const appointmentData = [
         placeholder: 'Ваше имя',
         disabled: false,
     },
-    {
-        label: 'Почта',
-        name: 'email',
-        type: 'email',
-        placeholder: '',
-        disabled: true,
-    },
+    // {
+    //     label: 'Почта',
+    //     name: 'email',
+    //     type: 'email',
+    //     placeholder: '',
+    //     disabled: true,
+    // },
     {
         label: 'ваш запрос',
         name: 'query',
