@@ -19,7 +19,7 @@ export const profile = async (values: z.infer<typeof AppointmentSchema>) => {
         return { error: 'Unauthorized' };
     }
 
-    const { name, ...appointmentValues } = values;
+    const { name, tel, ...appointmentValues } = values;
     console.log(user, name, values);
 
     //  creating the appointment
@@ -29,18 +29,20 @@ export const profile = async (values: z.infer<typeof AppointmentSchema>) => {
             ...appointmentValues,
         },
     });
-    if (user.name !== values.name) {
+    if (user.name !== name || user.tel !== tel) {
         //   updating the user
         const updatedUser = await db.user.update({
             where: { id: dbUser.id },
             data: {
-                name: values.name,
+                name,
+                tel,
             },
         });
         //   updating in the session
         update({
             user: {
                 name: updatedUser.name,
+                tel: updatedUser.tel,
             },
         });
     }

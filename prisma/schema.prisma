@@ -24,7 +24,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String?
+  tel           String?
   accounts      Account[]
   role          UserRole @default(USER)
   appointments  Appointment[]
@@ -35,7 +35,6 @@ model Appointment {
   userId        String
   query         String?
   date          DateTime?
-  tel           String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

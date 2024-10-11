@@ -72,7 +72,7 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
                             key={index}
                             className="w-full py-8 overflow-hidden shadow-gray-500 shadow-lg rounded-3xl border-2 border-normal bg-clear text-center "
                         >
-                            <div className="h-12 w-72">
+                            <div className="h-12 max-xl:w-72 xl:w-96 ">
                                 <label
                                     htmlFor=""
                                     className="text-center font-bold"
@@ -116,14 +116,14 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
                 {success || error ? null : (
                     <Button
                         type="submit"
-                        className="w-1/2 text-center align-center m-auto my-8"
+                        className="max-sm:w-3/4 sm:w-1/2 xl:w-1/4 text-center align-center m-auto my-8"
                     >
                         Отправить
                     </Button>
                 )}
+                <FormError message={error} />
+                <FormSuccess message={success} />
             </form>
-            <FormError message={error} />
-            <FormSuccess message={success} />
         </>
     );
 };

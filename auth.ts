@@ -77,6 +77,7 @@ export const {
             if (session.user) {
                 session.user.name = token.name;
                 session.user.email = token.email;
+                session.user.tel = token.tel;
                 session.user.isOAuth = token.isOAuth as boolean;
             }
 
@@ -96,6 +97,7 @@ export const {
             token.role = existingUser.role;
             token.name = existingUser.name;
             token.email = existingUser.email;
+            token.tel = existingUser.tel;
 
             return token;
         },
