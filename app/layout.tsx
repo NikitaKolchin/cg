@@ -27,7 +27,10 @@ export default async function RootLayout({
     const session = await auth();
     return (
         <SessionProvider session={session}>
-            <html lang={AppConfig.locale} className={montserrat.className}>
+            <html
+                lang={AppConfig.locale}
+                className={montserrat.className + ' scroll-smooth'}
+            >
                 <body className="flex flex-col h-screen justify-between">
                     <Header />
                     {children}
