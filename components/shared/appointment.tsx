@@ -21,7 +21,7 @@ import { useRouter } from 'next/navigation';
 type AppointmentProps = {
     user: {
         name?: string;
-        email?: string;
+        tel?: string;
     };
 };
 
@@ -41,7 +41,7 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
         if (success) {
             setTimeout(() => {
                 router.push(`/`);
-            }, 3000);
+            }, 5000);
         }
     });
     const onSubmit = (values: z.infer<typeof AppointmentSchema>) => {
@@ -79,22 +79,14 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
                                 >
                                     {item.label}
                                 </label>
-                                {!item.disabled &&
-                                    errors?.[
-                                        item.name as keyof z.infer<
-                                            typeof AppointmentSchema
-                                        >
-                                    ] && (
-                                        <div className="text-sm text-red-600">
-                                            {
-                                                errors?.[
-                                                    item.name as keyof z.infer<
-                                                        typeof AppointmentSchema
-                                                    >
-                                                ]?.message
-                                            }
-                                        </div>
-                                    )}
+                                {errors?.[item.name] && (
+                                    <div className="text-sm text-red-600">
+                                        {errors?.[item.name]?.message ===
+                                        'Invalid date'
+                                            ? 'Неверная дата'
+                                            : errors?.[item.name]?.message}
+                                    </div>
+                                )}
                             </div>
                             <input
                                 className="border border-dark rounded-xl p-2 text-center shadow-xl"
@@ -105,9 +97,10 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
                                     >,
                                 )}
                                 type={item.type}
-                                disabled={item.disabled}
                                 defaultValue={
-                                    user?.[item.name as 'name' | 'email']
+                                    item.name === 'tel' || item.name === 'name'
+                                        ? user?.[item.name]
+                                        : undefined
                                 }
                             />
                         </div>

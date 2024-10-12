@@ -1,3 +1,6 @@
+import { z } from 'zod';
+import { AppointmentSchema } from './schema';
+
 export const menuData = [
     { title: 'Формат работы', link: '/#format' },
     { title: 'Мой опыт', link: '/#experience' },
@@ -126,13 +129,17 @@ export const costData = [
     },
 ];
 
-export const appointmentData = [
+export const appointmentData: {
+    label: string;
+    name: keyof z.infer<typeof AppointmentSchema>;
+    type: string;
+    placeholder: string;
+}[] = [
     {
         label: 'Имя',
         name: 'name',
         type: 'text',
         placeholder: 'Ваше имя',
-        disabled: false,
     },
     // {
     //     label: 'Почта',
