@@ -9,6 +9,8 @@ import Google from 'next-auth/providers/google';
 import Github from 'next-auth/providers/github';
 import Yandex from 'next-auth/providers/yandex';
 import { Provider } from '@auth/core/providers';
+import { createTransport } from 'nodemailer';
+import { AppConfig, text, html } from '@/lib/utils';
 
 const serviceName = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
 const myEmail = process.env.NEXT_PUBLIC_EMAIL_USER;
@@ -24,6 +26,28 @@ const providers: Provider[] = [
                 pass: password, //'ybjd alqv rezo bjow',
             },
             from: process.env.NEXT_PUBLIC_EMAIL_USER,
+        },
+        async sendVerificationRequest(params) {
+            const { identifier, url, provider, theme } = params;
+            const { host } = new URL(url);
+            console.log(provider.from);
+            // NOTE: You are not required to use `nodemailer`, use whatever you want.
+            const transport = createTransport(provider.server);
+            const result = await transport.sendMail({
+                to: identifier,
+                from: `${AppConfig.title} ${AppConfig.from} `,
+                subject: `Вход на сайт ${host}`,
+                text: text({ url, host }),
+                html: html({ url, host, theme }),
+            });
+            const failed = result.rejected
+                .concat(result.pending)
+                .filter(Boolean);
+            if (failed.length) {
+                throw new Error(
+                    `Письмо (${failed.join(', ')}) не может быть отправлено`,
+                );
+            }
         },
     }),
     Yandex({
