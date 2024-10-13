@@ -30,7 +30,8 @@ export const profile = async (values: z.infer<typeof AppointmentSchema>) => {
     const createdAppointment = await db.appointment.create({
         data: {
             userId: dbUser.id,
-            ...appointmentValues,
+            date: appointmentValues.date.toISOString(),
+            query: appointmentValues.query,
         },
     });
     if (user.name !== name || user.tel !== tel) {
@@ -60,12 +61,13 @@ export const profile = async (values: z.infer<typeof AppointmentSchema>) => {
         },
         from: process.env.NEXT_PUBLIC_EMAIL_USER,
     });
+    const success = `Запись на  ${createdAppointment.date?.toLocaleTimeString()} ${createdAppointment.date?.toLocaleDateString()} создана!`;
     await transport.sendMail({
         to: ['kolchin.nv@gmail.com', 'yanochka07.07.1997@icloud.com'],
         subject: `У вас новая запись`,
-        text: `${name} ${tel} ${createdAppointment.date?.toLocaleTimeString()}`,
+        text: `${success} ${name} ${tel} ${createdAppointment.query}`,
     });
     return {
-        success: `Запись на  ${createdAppointment.date?.toLocaleTimeString()} ${createdAppointment.date?.toLocaleDateString()} создана!`,
+        success,
     };
 };
