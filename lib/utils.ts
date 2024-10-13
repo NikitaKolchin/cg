@@ -12,7 +12,6 @@ export const AppConfig = {
     description:
         'Яна Агевнина, психолог, профориентолог, карьерный консультант​, игропрактик',
     locale: 'ru',
-    from: '<uproffi@gmail.com>',
 };
 
 export function html(params: { url: string; host: string; theme: Theme }) {

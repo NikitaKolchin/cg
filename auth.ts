@@ -35,7 +35,7 @@ const providers: Provider[] = [
             const transport = createTransport(provider.server);
             const result = await transport.sendMail({
                 to: identifier,
-                from: `${AppConfig.title} ${AppConfig.from} `,
+                from: `${AppConfig.title} <${process.env.NEXT_PUBLIC_EMAIL_USER}> `,
                 subject: `Вход на сайт ${host}`,
                 text: text({ url, host }),
                 html: html({ url, host, theme }),
