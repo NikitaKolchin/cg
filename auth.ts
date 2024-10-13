@@ -101,6 +101,9 @@ export const {
 
             return token;
         },
+        async redirect() {
+            return '/profile';
+        },
     },
     adapter: PrismaAdapter(db), // prisma adapter is supported on non edge
     session: { strategy: 'jwt' },
