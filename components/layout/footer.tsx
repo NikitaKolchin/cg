@@ -18,7 +18,7 @@ const Footer = () => {
                 <div className="max-sm:hidden flex flex-col gap-4">
                     <IconList color="white" size={28} />
                     <span className="text-white text-xl">
-                        +7 (999) 072-07-17
+                        <a href="tel:+79990720717">+7 (999) 072-07-17</a>
                     </span>
                 </div>
             </div>

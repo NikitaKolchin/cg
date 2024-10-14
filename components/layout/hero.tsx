@@ -11,7 +11,7 @@ import Link from 'next/link';
 const Hero = async () => {
     return (
         <Section color="bg-dark" yPadding="sm:py-8 max-xl:py-4">
-            <div className="sm:flex 2xl:mb-6">
+            <div className="sm:flex 3xl:mb-6">
                 <header className="text-left">
                     <h1
                         className={`sm:text-6xl max-xl:text-2xl sm:leading-tight font-bold text-white`}
@@ -54,7 +54,7 @@ const Hero = async () => {
                         height: 'auto',
                     }}
                     alt={AppConfig.title}
-                    className="max-xl:absolute max-xl:top-52 max-lg:top-64 max-md:top-48 max-xl:left-20 max-xl:opacity-55 max-sm:opacity-85"
+                    className="max-xl:absolute max-xl:top-52 max-lg:top-64 max-md:top-48 max-xl:left-20 max-xl:opacity-55 max-sm:opacity-85 max-xs:hidden"
                 />
             </div>
         </Section>

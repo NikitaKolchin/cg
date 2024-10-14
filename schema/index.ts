@@ -7,7 +7,7 @@ export const LoginSchema = z.object({
     }),
 });
 
-const telValidation = new RegExp(/^\+[1-9]{1}[0-9]{3,14}$/);
+const telValidation = new RegExp(/^\+?[1-9]\d{9,10}$/);
 
 export const AppointmentSchema = z.object({
     name: z.string().min(1, { message: 'Поле не может быть пустым' }),
