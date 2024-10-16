@@ -42,7 +42,7 @@ const SliderImages: FC<Props> = ({ data }) => {
                                 )}
                                 <Image
                                     className="align-middle"
-                                    src={`/assets/images/${item.fileName}.webp`}
+                                    src={`/images/${item.fileName}.webp`}
                                     alt={item.text}
                                     width={
                                         item.fileName === 'e4' ||
