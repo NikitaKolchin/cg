@@ -52,8 +52,8 @@ const SliderImages: FC<Props> = ({ data }) => {
                                     }
                                     height={600}
                                     onClick={() => {
-                                        setFileName(item.fileName);
                                         setIsOpenModal(true);
+                                        setFileName(item.fileName);
                                     }}
                                 />
                             </div>
