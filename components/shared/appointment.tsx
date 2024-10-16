@@ -64,7 +64,7 @@ const Appointment: FC<PropsWithChildren<AppointmentProps>> = ({ user }) => {
         <>
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col justify-center m-auto gap-2 min-h-screen w-full  gap-y-10 items-center"
+                className="flex flex-col justify-center m-auto gap-2 gap-y-10 items-center"
             >
                 <div className="pt-16 sm:grid sm:grid-cols-2 sm:gap-16 max-sm:flex max-sm:flex-col max-sm:gap-4  text-gray-800">
                     {appointmentData.map((item, index) => (

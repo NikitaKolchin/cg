@@ -9,7 +9,7 @@ const ProtectedLayout = async ({ children }: ProtectedLayoutProps) => {
     const session = await auth();
     if (!session) return redirect('/auth/login');
     return (
-        <main>
+        <main className="bg-light sm:h-screen sm:overflow-auto">
             {/* <Navbar /> */}
             {children}
         </main>
